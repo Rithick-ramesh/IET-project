@@ -1,0 +1,134 @@
+{
+    "name": "Bengaluru",
+    "type": "city",
+    "state": "Karnataka",
+    "tag": "THE SILICON VALLEY OF INDIA",
+    "description": "Bengaluru is a vibrant, modern metropolis in Karnataka, famous as India's technology hub, garden city, and culinary capital.",
+    "about_more": "Enjoy its pleasant climate, grand gardens like Cubbon Park, and Tudor-style Bangalore Palace. Bengaluru is also the beer capital of India, with a rich cafe and street food culture.",
+    "image": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=800&auto=format&fit=crop&sig=be1",
+    "about_image": "https://images.unsplash.com/photo-1588698064972-be7cb0faec0b?q=80&w=800&auto=format&fit=crop&sig=be2",
+    "language": "Kannada",
+    "best_time": "October - March",
+    "food": "Bisi Bele Bath",
+    "attractions": [
+        {
+            "name": "Bangalore Palace",
+            "image": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=800&auto=format&fit=crop",
+            "desc": "A royal palace inspired by Windsor Castle, boasting Tudor-style architecture and vintage paintings.",
+            "description": "A royal palace inspired by Windsor Castle, boasting Tudor-style architecture and vintage paintings."
+        },
+        {
+            "name": "Lalbagh Botanical Garden",
+            "image": "https://images.unsplash.com/photo-1588698064972-be7cb0faec0b?q=80&w=800&auto=format&fit=crop",
+            "desc": "An ancient garden houses India's largest collection of tropical plants and an iconic London-style Glass House.",
+            "description": "An ancient garden houses India's largest collection of tropical plants and an iconic London-style Glass House."
+        },
+        {
+            "name": "Cubbon Park",
+            "image": "https://images.unsplash.com/photo-1601058268499-e52658b8bb88?q=80&w=800&auto=format&fit=crop",
+            "desc": "A massive 300-acre lush green park in the heart of Bengaluru, serving as a sanctuary of biodiverse nature.",
+            "description": "A massive 300-acre lush green park in the heart of Bengaluru, serving as a sanctuary of biodiverse nature."
+        }
+    ],
+    "hotels": {
+        "luxury": [
+            {
+                "name": "Taj Resort & Spa Bengaluru",
+                "stars": "5 Star",
+                "location": "Premium Lakefront / City Center",
+                "image": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=800&auto=format&fit=crop",
+                "desc": "World-class 5-star premium stay in Bengaluru offering heritage interiors, spa, and fine dining.",
+                "link": "https://www.booking.com/searchresults.html?ss=Taj+Resort+&+Spa+Bengaluru",
+                "price": "₹24,000 / night",
+                "amenities": [
+                    "Free Wi-Fi",
+                    "Swimming Pool",
+                    "Spa & Wellness",
+                    "Bar & Lounge",
+                    "Room Service"
+                ]
+            },
+            {
+                "name": "The Leela Palace Bengaluru",
+                "stars": "5 Star",
+                "location": "Royal District",
+                "image": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=800&auto=format&fit=crop",
+                "desc": "Elegant suites, private pools, royal gardens, and personalized service in Bengaluru.",
+                "link": "https://www.booking.com/searchresults.html?ss=The+Leela+Palace+Bengaluru",
+                "price": "₹26,000 / night",
+                "amenities": [
+                    "Free Wi-Fi",
+                    "Swimming Pool",
+                    "Spa & Gym",
+                    "Fine Dining Restaurants"
+                ]
+            }
+        ],
+        "comfort": [
+            {
+                "name": "Lemon Tree Premier Bengaluru",
+                "stars": "4 Star",
+                "location": "Transit Hub / Main Road",
+                "image": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=800&auto=format&fit=crop",
+                "desc": "Comfortable rooms with modern amenities, swimming pool, and business lounge in Bengaluru.",
+                "link": "https://www.booking.com/searchresults.html?ss=Lemon+Tree+Premier+Bengaluru",
+                "price": "₹6,800 / night",
+                "amenities": [
+                    "Free Wi-Fi",
+                    "Rooftop Pool",
+                    "Bar & Lounge",
+                    "Fitness Centre"
+                ]
+            },
+            {
+                "name": "Fortune Park Bengaluru",
+                "stars": "4 Star",
+                "location": "Business District",
+                "image": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=800&auto=format&fit=crop",
+                "desc": "Bright, contemporary rooms with outstanding hospitality and rooftop dining in Bengaluru.",
+                "link": "https://www.booking.com/searchresults.html?ss=Fortune+Park+Bengaluru",
+                "price": "₹5,000 / night",
+                "amenities": [
+                    "Free Wi-Fi",
+                    "Swimming Pool",
+                    "Rooftop Cafe",
+                    "Business Center"
+                ]
+            }
+        ],
+        "budget": [
+            {
+                "name": "Zostel Bengaluru",
+                "stars": "Budget",
+                "location": "Tourist Hub",
+                "image": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=800&auto=format&fit=crop",
+                "desc": "Vibrant and affordable backpacker lodging with social spaces and clean rooms in Bengaluru.",
+                "link": "https://www.booking.com/searchresults.html?ss=Zostel+Bengaluru",
+                "price": "₹850 / night",
+                "amenities": [
+                    "Free Wi-Fi",
+                    "Common Lounge",
+                    "Patio",
+                    "Bike Rental"
+                ]
+            },
+            {
+                "name": "OYO Rooms Bengaluru",
+                "stars": "Budget",
+                "location": "Railway Station Road",
+                "image": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?q=80&w=800&auto=format&fit=crop",
+                "desc": "Clean and affordable rooms with friendly service and direct transit links in Bengaluru.",
+                "link": "https://www.booking.com/searchresults.html?ss=OYO+Rooms+Bengaluru",
+                "price": "₹1,600 / night",
+                "amenities": [
+                    "Free Wi-Fi",
+                    "Air Conditioning",
+                    "Restaurant",
+                    "Travel Desk"
+                ]
+            }
+        ]
+    },
+    "travel_tips": "Dress conservatively when visiting sacred places. Remove footwear where requested. Respect local customs.",
+    "nearby_attractions": "Scenic viewpoints, local handicraft hubs, and historical sites of Karnataka within 15km."
+}

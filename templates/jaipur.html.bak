@@ -1,0 +1,687 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jaipur - Amazing India</title>
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+        body {
+            padding-top: 85px !important;
+        }
+
+.hotel-section{
+    padding: 100px 70px;
+    background: #f5f5f5;
+}
+
+.hotel-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+    gap: 35px;
+    margin-top: 50px;
+}
+
+/* Hotel Card */
+
+.hotel-card{
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+
+    transition: 0.4s;
+}
+
+.hotel-card:hover{
+    transform: translateY(-10px);
+}
+
+/* Image */
+
+.hotel-card img{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+/* Content */
+
+.hotel-content{
+    padding: 25px;
+}
+
+.hotel-content h3{
+    font-size: 32px;
+    margin: 15px 0;
+}
+
+.hotel-content p{
+    font-size: 18px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Hotel Types */
+
+.hotel-type{
+    display: inline-block;
+
+    padding: 8px 18px;
+
+    border-radius: 30px;
+
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.luxury{
+    background: #ffe082;
+    color: #7a5200;
+}
+
+.comfort{
+    background: #bbdefb;
+    color: #0d47a1;
+}
+
+.affordable{
+    background: #c8e6c9;
+    color: #1b5e20;
+}
+
+/* Info */
+
+.hotel-info{
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+
+    color: #444;
+    font-size: 17px;
+}
+
+.hotel-info i{
+    color: orange;
+    margin-right: 6px;
+}
+
+/* Button */
+
+.hotel-content button{
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: linear-gradient(135deg,#ffcc00,#ff9800);
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.hotel-content button:hover{
+    transform: scale(1.03);
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+    .hotel-section{
+        padding: 80px 25px;
+    }
+
+    .hotel-content h3{
+        font-size: 26px;
+    }
+
+}
+.jaipur-bg{
+    background: url('{% static "images/jaipur image2.jpg" %}') no-repeat center center/cover !important;
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<!-- =========================
+     NAVBAR
+========================= -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top"
+     style="background: rgba(0, 0, 0, 0.85) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding: 15px 0; z-index: 2000; width: 100%;">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold text-warning fs-2"
+           href="{% url 'home' %}"
+           style="letter-spacing: 1px; color: #ffcc00 !important; font-size: 28px !important; text-decoration: none;">
+            Amazing India
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end"
+             id="navbarNav">
+
+            <ul class="navbar-nav align-items-center gap-3">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'destination' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Destination
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'ai_planner' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        AI Planner
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Contact
+                    </a>
+                </li>
+
+                {% if user.is_authenticated %}
+
+                <li class="nav-item">
+                    <span class="text-white small" style="color: white !important; font-weight: 500;">
+                        Hi, {{ user.username }}
+                    </span>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}"
+                       class="btn btn-warning rounded-pill px-3"
+                       style="color: black !important; background-color: #ffcc00 !important; border: none; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Logout
+                    </a>
+                </li>
+
+                {% else %}
+
+                <li class="nav-item">
+                    <a href="{% url 'login' %}"
+                       class="btn btn-warning rounded-pill px-3"
+                       style="color: black !important; background-color: #ffcc00 !important; border: none; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Login
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'signup' %}"
+                       class="btn btn-outline-light rounded-pill px-3"
+                       style="color: white !important; border: 1px solid white !important; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Sign Up
+                    </a>
+                </li>
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+  
+  <!-- Hero Section -->
+  <section class="hero jaipur-bg">
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+      <h1>Welcome To Jaipur</h1>
+      <p>
+        Explore the royal palaces, historic forts, colorful markets,
+        and rich Rajput culture of the Pink City.
+      </p>
+
+    
+    </div>
+  </section>
+
+<!-- Live Travel Status & Alerts Section -->
+<section class="live-alerts-section py-4" style="background: #fff6eb; border-bottom: 1px solid rgba(255, 152, 0, 0.15);">
+  <div class="container">
+    <div class="d-flex align-items-center gap-2 mb-3">
+      <span class="pulse-indicator"></span>
+      <h4 class="fw-bold mb-0 text-dark" style="font-size: 20px; letter-spacing: 0.5px;">Live Travel Status & Alerts</h4>
+    </div>
+    
+    <div class="row g-3">
+      <!-- Weather Card -->
+      <div class="col-md-3">
+        <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+          <div class="d-flex align-items-center gap-3">
+            <div class="alert-icon-box weather-bg"><i class="fa-solid fa-cloud-sun"></i></div>
+            <div>
+              <h5 class="fw-bold mb-1 small text-muted text-uppercase" style="font-size: 11px;">Local Weather</h5>
+              <p class="mb-0 text-dark small font-weight-bold" style="font-size: 13px;">{{ alerts.weather }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Crowd Warning Card -->
+      <div class="col-md-3">
+        <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+          <div class="d-flex align-items-center gap-3">
+            <div class="alert-icon-box crowd-bg"><i class="fa-solid fa-users-line"></i></div>
+            <div>
+              <h5 class="fw-bold mb-1 small text-muted text-uppercase" style="font-size: 11px;">Crowd Status</h5>
+              <p class="mb-0 text-dark small font-weight-bold" style="font-size: 13px;">{{ alerts.crowd }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Safety Card -->
+      <div class="col-md-3">
+        <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+          <div class="d-flex align-items-center gap-3">
+            <div class="alert-icon-box safety-bg"><i class="fa-solid fa-shield-halved"></i></div>
+            <div>
+              <h5 class="fw-bold mb-1 small text-muted text-uppercase" style="font-size: 11px;">Safety Updates</h5>
+              <p class="mb-0 text-dark small font-weight-bold" style="font-size: 13px;">{{ alerts.safety }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Emergency Contacts Card -->
+      <div class="col-md-3">
+        <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+          <div class="d-flex align-items-center gap-3">
+            <div class="alert-icon-box emergency-bg"><i class="fa-solid fa-truck-medical"></i></div>
+            <div>
+              <h5 class="fw-bold mb-1 small text-muted text-uppercase" style="font-size: 11px;">Emergency Help</h5>
+              <p class="mb-1 text-dark small" style="font-size: 12px;"><strong>Hospital:</strong> {{ alerts.hospital }}</p>
+              <p class="mb-0 text-dark small" style="font-size: 12px;"><strong>Police:</strong> {{ alerts.police }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Live Alerts CSS overrides -->
+<style>
+  .pulse-indicator {
+    width: 10px;
+    height: 10px;
+    background-color: #ff9800;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);
+    animation: pulse 1.6s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);
+    }
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 6px rgba(255, 152, 0, 0);
+    }
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 152, 0, 0);
+    }
+  }
+
+  .alert-status-card {
+    background: white;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    border-left: 4px solid #ff9800 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+  }
+
+  .alert-status-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 152, 0, 0.1) !important;
+  }
+
+  .alert-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .weather-bg { background: #e3f2fd; color: #1e88e5; }
+  .crowd-bg { background: #fff3e0; color: #fb8c00; }
+  .safety-bg { background: #e8f5e9; color: #43a047; }
+  .emergency-bg { background: #ffebee; color: #e53935; }
+</style>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?q=80&w=1200&auto=format&fit=crop" alt="Jaipur">
+    </div>
+
+    <div class="about-content">
+      <span class="section-tag">ROYAL DESTINATION</span>
+
+      <h2>About Jaipur</h2>
+  <p>
+        Jaipur, the capital city of Rajasthan, is one of the most iconic
+        tourist destinations in India. Famous for its pink-colored buildings,
+        Jaipur beautifully blends history, culture, architecture, and traditions.
+      </p>
+
+      <p>
+        The city is home to magnificent attractions like Amber Fort,
+        Hawa Mahal, City Palace, Jal Mahal, and Jantar Mantar.
+        Jaipur is also known for traditional handicrafts, jewelry,
+        and delicious Rajasthani cuisine.
+      </p>
+
+      <div class="info-grid">
+
+        <div class="info-card">
+          <i class="fa-solid fa-location-dot"></i>
+          <h3>State</h3>
+          <p>Rajasthan</p>
+        </div>
+
+        <div class="info-card">
+          <i class="fa-solid fa-language"></i>
+          <h3>Language</h3>
+          <p>Hindi</p>
+        </div>
+
+        <div class="info-card">
+          <i class="fa-solid fa-sun"></i>
+          <h3>Best Time</h3>
+          <p>October - March</p>
+        </div>
+
+        <div class="info-card">
+          <i class="fa-solid fa-utensils"></i>
+          <h3>Famous Food</h3>
+          <p>Dal Baati Churma</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Places -->
+  <section class="places" id="places">
+
+    <div class="section-title">
+      <h2>Top Tourist Attractions</h2>
+      <p>Best places to visit in Jaipur</p>
+    </div>
+
+    <div class="place-container">
+
+      <div class="place-card">
+        <img src="{% static 'images/jaipur image3.jpg' %}" alt="Amber Fort">
+        <div class="place-content">
+          <h3>Amber Fort</h3>
+          <p>
+            A majestic fort showcasing Rajput architecture and panoramic city views.
+          </p>
+           </p>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <img src="{% static 'images/jaipur image2.jpg' %}" alt="Hawa Mahal">
+        <div class="place-content">
+          <h3>Hawa Mahal</h3>
+          <p>
+            Jaipur’s iconic palace with beautiful windows and pink sandstone design.
+          </p>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <img src="{% static 'images/jaipur image4.jpg' %}" alt="City Palace">
+        <div class="place-content">
+          <h3>City Palace</h3>
+          <p>
+            A grand royal residence featuring museums, courtyards, and heritage art.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- HOTEL SECTION --><!-- =========================================
+     JAIPUR HOTELS SECTION
+========================================= -->
+
+<section class="jaipur-hotels">
+
+    <div class="section-title">
+        <h2>Best Hotels In Jaipur</h2>
+        <p>Royal luxury, heritage comfort, and budget stays</p>
+    </div>
+
+    <!-- LUXURY -->
+
+    <h1 class="hotel-category">Luxury Hotels</h1>
+
+    <div class="hotel-container">
+
+        <div class="hotel-card">
+
+            <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="hotel-content">
+
+                <h3>Rambagh Palace</h3>
+
+                <p>
+                    Royal palace hotel with luxurious rooms,
+                    heritage interiors, and premium hospitality.
+                </p>
+
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> 5 Star</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Jaipur</span>
+                </div>
+
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Rambagh+Palace+Jaipur', '_blank')">Book Now</button>
+
+            </div>
+
+        </div>
+
+        <div class="hotel-card">
+
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="hotel-content">
+
+                <h3>Fairmont Jaipur</h3>
+
+                <p>
+                    Elegant luxury resort inspired by Mughal
+                    and Rajput architecture.
+                </p>
+
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> 5 Star</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Kukas</span>
+                </div>
+
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Fairmont+Jaipur+Jaipur', '_blank')">Book Now</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- COMFORT -->
+
+    <h1 class="hotel-category">Comfort Hotels</h1>
+
+    <div class="hotel-container">
+
+        <div class="hotel-card">
+
+            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="hotel-content">
+
+                <h3>Holiday Inn Jaipur</h3>
+
+                <p>
+                    Comfortable modern stay with rooftop dining
+                    and swimming pool.
+                </p>
+
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> 4 Star</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Tonk Road</span>
+                </div>
+
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Holiday+Inn+Jaipur+Jaipur', '_blank')">Book Now</button>
+
+            </div>
+
+        </div>
+
+        <div class="hotel-card">
+
+            <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="hotel-content">
+
+                <h3>Lemon Tree Premier</h3>
+
+                <p>
+                    Stylish rooms with excellent comfort
+                    and great city connectivity.
+                </p>
+
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> 4 Star</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Bani Park</span>
+                </div>
+
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Lemon+Tree+Premier+Jaipur', '_blank')">Book Now</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- AFFORDABLE -->
+
+    <h1 class="hotel-category">Affordable Hotels</h1>
+
+    <div class="hotel-container">
+
+        <div class="hotel-card">
+
+            <img src="https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="hotel-content">
+
+                <h3>Hotel Pearl Palace</h3>
+
+                <p>
+                    Budget-friendly hotel with traditional
+                    Rajasthani interiors and tasty food.
+                </p>
+
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> Budget</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Jaipur</span>
+                </div>
+
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Hotel+Pearl+Palace+Jaipur', '_blank')">Book Now</button>
+
+            </div>
+
+        </div>
+
+        <div class="hotel-card">
+
+            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="hotel-content">
+
+                <h3>Hotel Arya Niwas</h3>
+
+                <p>
+                    Peaceful affordable stay with garden view
+                    and comfortable rooms.
+                </p>
+
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> Budget</span>
+                    <span><i class="fa-solid fa-location-dot"></i> MI Road</span>
+                </div>
+
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Hotel+Arya+Niwas+Jaipur', '_blank')">Book Now</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Reviews Section -->
+{% include 'reviews_section.html' %}
+
+  <!-- Footer -->
+  <footer>
+    <h2>Amazing India</h2>
+    <p>Discover the beauty of India’s most incredible destinations.</p>
+  </footer>
+
+</body>
+</html>

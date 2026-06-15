@@ -1,0 +1,261 @@
+*{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background: #f8f9fa;
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+
+    /* Disabled conflict */
+.navbar-old-disabled{
+      background: white;
+      padding: 18px 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .navbar-brand-old-disabled{
+      font-size: 34px;
+      font-weight: bold;
+      color: #ff6b00 !important;
+    }
+
+    .nav-link-old-disabled{
+      color: black !important;
+      margin-left: 20px;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    .nav-link-hover-old-disabled{
+      color: #ff6b00 !important;
+    }
+
+    /* HERO SECTION */
+
+    .contact-hero{
+      height: 60vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+      url('images tour/contact us image.jpg');
+
+      background-size: cover;
+      background-position: center;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+
+    .contact-hero h1{
+      font-size: 75px;
+      font-weight: bold;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+    }
+
+    .contact-hero p{
+      font-size: 24px;
+      margin-top: 15px;
+    }
+
+    /* CONTACT SECTION */
+
+    .contact-section{
+      padding: 90px 20px;
+    }
+
+    .contact-box{
+      background: white;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    /* LEFT SIDE */
+
+    .contact-info{
+      background: #ff6b00;
+      color: white;
+      padding: 60px 40px;
+      height: 100%;
+    }
+
+    .contact-info h2{
+      font-size: 42px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    .contact-info p{
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .info-item{
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .info-item i{
+      font-size: 24px;
+      margin-right: 20px;
+    }
+
+    .info-item span{
+      font-size: 18px;
+    }
+
+    /* RIGHT SIDE */
+
+    .contact-form{
+      padding: 60px 40px;
+    }
+
+    .contact-form h2{
+      font-size: 42px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      color: #ff6b00;
+    }
+
+    .form-control{
+      height: 55px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      box-shadow: none !important;
+    }
+
+    textarea.form-control{
+      height: 150px;
+      resize: none;
+    }
+
+    .send-btn{
+      background: #ff6b00;
+      color: white;
+      border: none;
+      padding: 14px 35px;
+      border-radius: 35px;
+      font-size: 18px;
+      transition: 0.4s;
+    }
+
+    .send-btn:hover{
+      background: black;
+      transform: scale(1.05);
+    }
+
+
+    /* FOOTER */
+
+    .footer-section{
+      background: #050505;
+      color: white;
+      padding: 70px 0 30px;
+    }
+
+    .footer-heading{
+      font-size: 45px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    .footer-address{
+      font-size: 22px;
+      line-height: 2;
+      color: #d8d8d8;
+    }
+
+    .connect-heading{
+      font-size: 40px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .social-icons{
+      display: flex;
+      justify-content: end;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .social-icons a{
+      width: 60px;
+      height: 60px;
+      background: #1c1c1c;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      transition: 0.4s;
+    }
+
+    .social-icons a i{
+      color: white;
+      font-size: 22px;
+    }
+
+    .social-icons a:hover{
+      background: #ff6b00;
+      transform: translateY(-5px);
+    }
+
+    .footer-line{
+      margin: 60px 0 25px;
+      border-color: rgba(255,255,255,0.15);
+    }
+
+    .copyright-text{
+      text-align: center;
+      color: #d6d6d6;
+      font-size: 20px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .contact-hero h1{
+        font-size: 45px;
+      }
+
+      .contact-hero p{
+        font-size: 18px;
+      }
+
+      .contact-info h2,
+      .contact-form h2{
+        font-size: 32px;
+      }
+
+      .footer-heading,
+      .connect-heading{
+        text-align: center;
+        font-size: 32px;
+      }
+
+      .footer-address{
+        text-align: center;
+        font-size: 18px;
+      }
+
+      .social-icons{
+        justify-content: center;
+      }
+
+      .copyright-text{
+        font-size: 16px;
+      }
+
+    }

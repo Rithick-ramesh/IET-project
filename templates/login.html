@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Amazing India</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/loginpage.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">🗺️</div>
+        <h1>Welcome Back</h1>
+        <div class="subtitle">Log in to plan your next adventure</div>
+
+        {% if messages %}
+            <div class="messages-container" style="margin-bottom: 20px; background: rgba(235, 87, 87, 0.2); border: 1px solid rgb(235, 87, 87); border-radius: 10px; padding: 10px; text-align: center; color: #ff9b9b; font-size: 14px;">
+                {% for message in messages %}
+                    <div>{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-box">
+                <input type="text" name="username" placeholder="Username" required>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+
+        <div class="bottom-text">
+            Don't have an account?
+            <a href="{% url 'signup' %}">Sign Up</a>
+        </div>
+
+        <a href="{% url 'home' %}" class="home-link">← Back to Home</a>
+    </div>
+
+<!-- GRACEFUL IMAGE FALLBACK SCRIPT -->
+<style>
+.image-not-available-placeholder {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2c2c35 0%, #1a1a20 100%) !important;
+    color: #ffcc00 !important;
+    border: 1px solid rgba(255, 204, 0, 0.15) !important;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif !important;
+}
+.image-not-available-placeholder i {
+    font-size: 32px;
+    color: #ffcc00;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.3));
+}
+.image-not-available-placeholder span {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    function createPlaceholder(img) {
+        if (img.parentNode && !img.parentNode.querySelector('.image-not-available-placeholder')) {
+            const placeholder = document.createElement("div");
+            placeholder.className = "image-not-available-placeholder";
+            
+            // Mirror classes and styles of the original image
+            if (img.className) {
+                placeholder.classList.add(...img.classList);
+            }
+            
+            // Set styles dynamically
+            const style = window.getComputedStyle(img);
+            placeholder.style.width = img.style.width || (img.offsetWidth ? img.offsetWidth + 'px' : '100%');
+            
+            // Get height with fallback
+            let height = img.style.height || style.height;
+            if (!height || height === 'auto' || height === '0px') {
+                height = img.offsetHeight ? img.offsetHeight + 'px' : '240px';
+            }
+            placeholder.style.height = height;
+            placeholder.style.borderRadius = style.borderRadius || '16px';
+            placeholder.style.margin = style.margin;
+            placeholder.style.display = 'flex';
+            
+            placeholder.innerHTML = `
+                <i class="fa-solid fa-image-slash"></i>
+                <span>Image Not Available</span>
+            `;
+            
+            img.style.display = "none";
+            img.parentNode.insertBefore(placeholder, img);
+        }
+    }
+
+    // Process all images
+    document.querySelectorAll("img").forEach(function(img) {
+        const src = img.getAttribute("src");
+        if (!src || src === "Image Not Available" || src.includes("Image%20Not%20Available")) {
+            createPlaceholder(img);
+        } else {
+            img.addEventListener("error", function() {
+                createPlaceholder(img);
+            });
+            if (img.complete && img.naturalWidth === 0) {
+                createPlaceholder(img);
+            }
+        }
+    });
+});
+</script>
+
+</body>
+</html>

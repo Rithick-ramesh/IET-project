@@ -1,0 +1,517 @@
+{
+    "agra": {
+        "name": "Agra",
+        "type": "city",
+        "state": "Uttar Pradesh",
+        "tag": "HISTORICAL WONDER",
+        "description": "Agra is one of India's most iconic tourist destinations, famous worldwide for the magnificent Taj Mahal, one of the Seven Wonders of the World.",
+        "about_more": "Located in Uttar Pradesh, Agra showcases the grandeur of Mughal architecture through forts, palaces, gardens, and ancient monuments.",
+        "image": "images/destination image1.jpg",
+        "about_image": "images/agra image3.webp",
+        "language": "Hindi",
+        "best_time": "October - March",
+        "food": "Petha & Mughlai Cuisine",
+        "attractions": [
+            {
+                "name": "Taj Mahal",
+                "image": "images/agra image5.jpg",
+                "desc": "The world-famous marble monument built by Shah Jahan as a symbol of eternal love."
+            },
+            {
+                "name": "Agra Fort",
+                "image": "images/agra image6.jpg",
+                "desc": "A UNESCO World Heritage Site featuring stunning Mughal palaces and royal halls."
+            },
+            {
+                "name": "Fatehpur Sikri",
+                "image": "images/agra image2.jpg",
+                "desc": "An ancient Mughal city known for its red sandstone architecture and history."
+            }
+        ],
+        "hotels": {
+            "luxury": [
+                {
+                    "name": "The Oberoi Amarvilas",
+                    "stars": "5 Star",
+                    "location": "Taj East Gate",
+                    "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop&sig=1",
+                    "desc": "Experience ultra-luxury rooms with direct Taj Mahal views and world-class hospitality.",
+                    "link": "https://www.booking.com/searchresults.html?ss=The+Oberoi+Amarvilas+Agra"
+                },
+                {
+                    "name": "ITC Mughal",
+                    "stars": "5 Star",
+                    "location": "Fatehabad Road",
+                    "image": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=1200&auto=format&fit=crop&sig=2",
+                    "desc": "Mughal-style luxury resort with spa, gardens, and premium dining experience.",
+                    "link": "https://www.booking.com/searchresults.html?ss=ITC+Mughal+Agra"
+                }
+            ],
+            "comfort": [
+                {
+                    "name": "Tajview Agra",
+                    "stars": "4 Star",
+                    "location": "Tajganj",
+                    "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=1200&auto=format&fit=crop&sig=3",
+                    "desc": "Comfortable premium stay with beautiful Taj Mahal views and modern facilities.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Tajview+Agra+Agra"
+                },
+                {
+                    "name": "Grand Mercure",
+                    "stars": "4 Star",
+                    "location": "Taj Nagri",
+                    "image": "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=1200&auto=format&fit=crop&sig=4",
+                    "desc": "Stylish modern hotel offering rooftop pool, comfort, and great hospitality.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Grand+Mercure+Agra"
+                }
+            ],
+            "budget": [
+                {
+                    "name": "Hotel Taj Sojourn",
+                    "stars": "Budget",
+                    "location": "Taj Nagri",
+                    "image": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200&auto=format&fit=crop&sig=5",
+                    "desc": "Affordable and clean stay near Taj Mahal with excellent hospitality.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Hotel+Taj+Sojourn+Agra"
+                },
+                {
+                    "name": "Hotel Amar",
+                    "stars": "Budget",
+                    "location": "Fatehabad Road",
+                    "image": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1200&auto=format&fit=crop&sig=6",
+                    "desc": "Budget-friendly hotel with comfortable rooms and excellent tourist location.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Hotel+Amar+Agra"
+                }
+            ]
+        }
+    },
+    "jaipur": {
+        "name": "Jaipur",
+        "type": "city",
+        "state": "Rajasthan",
+        "tag": "ROYAL DESTINATION",
+        "description": "Jaipur, the capital city of Rajasthan, is one of the most iconic tourist destinations in India. Famous for its pink-colored buildings, it beautifully blends history, culture, architecture, and traditions.",
+        "about_more": "The city is home to magnificent attractions like Amber Fort, Hawa Mahal, City Palace, Jal Mahal, and Jantar Mantar. Jaipur is also known for traditional handicrafts, jewelry, and delicious Rajasthani cuisine.",
+        "image": "images/jaipur image1.webp",
+        "about_image": "https://images.unsplash.com/photo-1546857931-a1d82f7b4946?q=80&w=1200&auto=format&fit=crop&sig=7",
+        "language": "Hindi",
+        "best_time": "October - March",
+        "food": "Dal Baati Churma",
+        "attractions": [
+            {
+                "name": "Amber Fort",
+                "image": "images/jaipur image3.jpg",
+                "desc": "A majestic fort showcasing Rajput architecture and panoramic city views."
+            },
+            {
+                "name": "Hawa Mahal",
+                "image": "images/jaipur image2.jpg",
+                "desc": "Jaipur's iconic palace with beautiful windows and pink sandstone design."
+            },
+            {
+                "name": "City Palace",
+                "image": "images/jaipur image4.jpg",
+                "desc": "A grand royal residence featuring museums, courtyards, and heritage art."
+            }
+        ],
+        "hotels": {
+            "luxury": [
+                {
+                    "name": "Rambagh Palace",
+                    "stars": "5 Star",
+                    "location": "Jaipur",
+                    "image": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200&auto=format&fit=crop&sig=8",
+                    "desc": "Royal palace hotel with luxurious rooms, heritage interiors, and premium hospitality.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Rambagh+Palace+Jaipur"
+                },
+                {
+                    "name": "Fairmont Jaipur",
+                    "stars": "5 Star",
+                    "location": "Kukas",
+                    "image": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=1200&auto=format&fit=crop&sig=9",
+                    "desc": "Elegant luxury resort inspired by Mughal and Rajput architecture.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Fairmont+Jaipur+Jaipur"
+                }
+            ],
+            "comfort": [
+                {
+                    "name": "Holiday Inn Jaipur",
+                    "stars": "4 Star",
+                    "location": "Tonk Road",
+                    "image": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1200&auto=format&fit=crop&sig=10",
+                    "desc": "Comfortable modern stay with rooftop dining and swimming pool.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Holiday+Inn+Jaipur+Jaipur"
+                },
+                {
+                    "name": "Lemon Tree Premier",
+                    "stars": "4 Star",
+                    "location": "Bani Park",
+                    "image": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop&sig=11",
+                    "desc": "Stylish rooms with excellent comfort and great city connectivity.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Lemon+Tree+Premier+Jaipur"
+                }
+            ],
+            "budget": [
+                {
+                    "name": "Hotel Pearl Palace",
+                    "stars": "Budget",
+                    "location": "Jaipur",
+                    "image": "https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?q=80&w=1200&auto=format&fit=crop&sig=12",
+                    "desc": "Budget-friendly hotel with traditional Rajasthani interiors and tasty food.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Hotel+Pearl+Palace+Jaipur"
+                },
+                {
+                    "name": "Hotel Arya Niwas",
+                    "stars": "Budget",
+                    "location": "MI Road",
+                    "image": "https://images.unsplash.com/photo-1606744824163-985d376605aa?q=80&w=1200&auto=format&fit=crop&sig=13",
+                    "desc": "Peaceful affordable stay with garden view and comfortable rooms.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Hotel+Arya+Niwas+Jaipur"
+                }
+            ]
+        }
+    },
+    "kerala": {
+        "name": "Kerala",
+        "type": "state",
+        "tag": "GOD'S OWN COUNTRY",
+        "description": "Kerala is a tropical paradise in Southern India, famous for its tranquil backwaters, palm-fringed beaches, ayurvedic health treatments, and scenic tea plantations in Munnar.",
+        "about_more": "Nestled along the Malabar Coast, Kerala boasts rich culture, spectacular houseboats, spice-rich cuisine, and classical dance forms like Kathakali.",
+        "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200&auto=format&fit=crop&sig=14",
+        "about_image": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1200&auto=format&fit=crop&sig=15",
+        "language": "Malayalam",
+        "best_time": "September - March",
+        "food": "Karimeen Pollichathu & Appam",
+        "attractions": [
+            {
+                "name": "Alleppey Backwaters",
+                "image": "https://images.unsplash.com/photo-1472214222541-d510753a4907?q=80&w=1200&auto=format&fit=crop&sig=16",
+                "desc": "Spend a serene day on a traditional houseboat cruising past palm trees and villages."
+            },
+            {
+                "name": "Munnar Hills",
+                "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop&sig=17",
+                "desc": "Lush tea gardens, rolling hills, and cool weather make this a beautiful hill station."
+            },
+            {
+                "name": "Kochi Fort",
+                "image": "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=1200&auto=format&fit=crop&sig=18",
+                "desc": "Historic port city featuring Chinese fishing nets and Portuguese colonial architecture."
+            }
+        ],
+        "hotels": {
+            "luxury": [
+                {
+                    "name": "Kumarakom Lake Resort",
+                    "stars": "5 Star",
+                    "location": "Kumarakom",
+                    "image": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1200&auto=format&fit=crop&sig=19",
+                    "desc": "One of India's finest luxury heritage resorts, situated on Lake Vembanad.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Kumarakom+Lake+Resort+Kerala"
+                },
+                {
+                    "name": "The Raviz Kovalam",
+                    "stars": "5 Star",
+                    "location": "Kovalam Beach",
+                    "image": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?q=80&w=1200&auto=format&fit=crop&sig=20",
+                    "desc": "Cliff top luxury resort with unmatched panoramic views of the Kovalam coastline.",
+                    "link": "https://www.booking.com/searchresults.html?ss=The+Raviz+Kovalam+Kerala"
+                }
+            ],
+            "comfort": [
+                {
+                    "name": "Scenic Munnar Resort",
+                    "stars": "4 Star",
+                    "location": "Munnar",
+                    "image": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop&sig=21",
+                    "desc": "Beautiful valley views with premium rooms, pool, and guided tea walks.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Scenic+Munnar+Resort+Kerala"
+                },
+                {
+                    "name": "Kochi Marriott Hotel",
+                    "stars": "4 Star",
+                    "location": "Kochi",
+                    "image": "https://images.unsplash.com/photo-1498503182468-3b51cbb6cb24?q=80&w=1200&auto=format&fit=crop&sig=22",
+                    "desc": "Contemporary comfort located next to Lulu Mall, offering premium dining and pool.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Kochi+Marriott+Hotel+Kerala"
+                }
+            ],
+            "budget": [
+                {
+                    "name": "Zostel Alleppey",
+                    "stars": "Budget",
+                    "location": "Alleppey Beach",
+                    "image": "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=1200&auto=format&fit=crop&sig=23",
+                    "desc": "Charming backpackers hostel right next to the beach, offering backwater tours.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Zostel+Alleppey+Kerala"
+                },
+                {
+                    "name": "Old Harbour Hotel",
+                    "stars": "Budget",
+                    "location": "Fort Kochi",
+                    "image": "https://images.unsplash.com/photo-1598928636135-d146006ff4be?q=80&w=1200&auto=format&fit=crop&sig=24",
+                    "desc": "Historical building restored as a boutique budget lodge in Fort Kochi.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Old+Harbour+Hotel+Kerala"
+                }
+            ]
+        },
+        "capital": "Thiruvananthapuram"
+    },
+    "goa": {
+        "name": "Goa",
+        "type": "state",
+        "tag": "BEACH PARADISE",
+        "description": "Goa is India's premier beach destination, known for its scenic sandy shores, vibrant nightlife, historical churches, water sports, and delicious seafood.",
+        "about_more": "With a unique Portuguese heritage, Goa features spectacular historic churches like the Bom Jesus Basilica alongside scenic locations like Baga and Calangute.",
+        "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop&sig=25",
+        "about_image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop&sig=26",
+        "language": "Konkani & English",
+        "best_time": "November - February",
+        "food": "Goan Fish Curry",
+        "attractions": [
+            {
+                "name": "Baga Beach",
+                "image": "https://images.unsplash.com/photo-1500627869374-13ad991b1116?q=80&w=1200&auto=format&fit=crop&sig=27",
+                "desc": "Famous for nightlife, beach shacks, music parties, and exciting water sports."
+            },
+            {
+                "name": "Dudhsagar Falls",
+                "image": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=1200&auto=format&fit=crop&sig=28",
+                "desc": "One of India's tallest waterfalls surrounded by lush forests and scenic beauty."
+            },
+            {
+                "name": "Bom Jesus Basilica",
+                "image": "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1200&auto=format&fit=crop&sig=29",
+                "desc": "A UNESCO World Heritage church showcasing Portuguese architecture and rich history."
+            }
+        ],
+        "hotels": {
+            "luxury": [
+                {
+                    "name": "Taj Exotica Resort & Spa",
+                    "stars": "5 Star",
+                    "location": "South Goa",
+                    "image": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1200&auto=format&fit=crop&sig=30",
+                    "desc": "Premium beachfront luxury resort with spa, private beach, and world-class hospitality.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Taj+Exotica+Resort+&+Spa+Goa"
+                },
+                {
+                    "name": "W Goa",
+                    "stars": "5 Star",
+                    "location": "Vagator",
+                    "image": "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=1200&auto=format&fit=crop&sig=31",
+                    "desc": "Stylish luxury resort near Vagator Beach with infinity pool and sea-view rooms.",
+                    "link": "https://www.booking.com/searchresults.html?ss=W+Goa+Goa"
+                }
+            ],
+            "comfort": [
+                {
+                    "name": "Country Inn & Suites",
+                    "stars": "4 Star",
+                    "location": "Candolim",
+                    "image": "https://images.unsplash.com/photo-1517840901100-8179e982acb7?q=80&w=1200&auto=format&fit=crop&sig=32",
+                    "desc": "Comfortable rooms with pool, modern interiors, and easy beach access.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Country+Inn+&+Suites+Goa"
+                },
+                {
+                    "name": "Lemon Tree Amarante",
+                    "stars": "4 Star",
+                    "location": "North Goa",
+                    "image": "https://images.unsplash.com/photo-1591088398332-8a7791972843?q=80&w=1200&auto=format&fit=crop&sig=33",
+                    "desc": "Elegant stay with modern facilities, restaurant, and peaceful atmosphere.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Lemon+Tree+Amarante+Goa"
+                }
+            ],
+            "budget": [
+                {
+                    "name": "Zostel Goa",
+                    "stars": "Budget",
+                    "location": "Anjuna",
+                    "image": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop&sig=34",
+                    "desc": "Popular affordable hostel with vibrant atmosphere and beach vibes.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Zostel+Goa+Goa"
+                },
+                {
+                    "name": "Hotel Bonanza",
+                    "stars": "Budget",
+                    "location": "Calangute",
+                    "image": "https://images.unsplash.com/photo-1522771930-78848d92936b?q=80&w=1200&auto=format&fit=crop&sig=35",
+                    "desc": "Budget-friendly stay with clean rooms and quick access to beaches.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Hotel+Bonanza+Goa"
+                }
+            ]
+        },
+        "capital": "Panaji"
+    },
+    "kashmir": {
+        "name": "Kashmir",
+        "type": "state",
+        "tag": "PARADISE ON EARTH",
+        "description": "Kashmir is famous worldwide for its breathtaking snow-capped mountains, pristine lakes (like Dal Lake), colorful tulip gardens, and houseboats.",
+        "about_more": "Often called \"Paradise on Earth\", Kashmir offers a scenic escape with spectacular valleys like Gulmarg and Pahalgam, rich handicrafts, and saffron fields.",
+        "image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200&auto=format&fit=crop&sig=36",
+        "about_image": "https://images.unsplash.com/photo-1543783207-ec64e4d95325?q=80&w=1200&auto=format&fit=crop&sig=37",
+        "language": "Kashmiri & Urdu",
+        "best_time": "March - October",
+        "food": "Rogan Josh & Kahwa Tea",
+        "attractions": [
+            {
+                "name": "Dal Lake",
+                "image": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?q=80&w=1200&auto=format&fit=crop&sig=38",
+                "desc": "Famous for its wooden houseboats and floating shikara boat rides."
+            },
+            {
+                "name": "Gulmarg Valley",
+                "image": "https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?q=80&w=1200&auto=format&fit=crop&sig=39",
+                "desc": "A gorgeous meadow known for winter skiing and the high-altitude cable car ride."
+            },
+            {
+                "name": "Pahalgam",
+                "image": "https://images.unsplash.com/photo-1433832597046-4f10e10ac764?q=80&w=1200&auto=format&fit=crop&sig=40",
+                "desc": "Lush pine forests, Lidder River, and stunning valleys perfect for trekking."
+            }
+        ],
+        "hotels": {
+            "luxury": [
+                {
+                    "name": "The Khyber Resort & Spa",
+                    "stars": "5 Star",
+                    "location": "Gulmarg",
+                    "image": "https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1200&auto=format&fit=crop&sig=41",
+                    "desc": "World-class luxury ski resort nestled in pine forests with mountain views.",
+                    "link": "https://www.booking.com/searchresults.html?ss=The+Khyber+Resort+&+Spa+Kashmir"
+                },
+                {
+                    "name": "Taj Lake Palace Srinagar",
+                    "stars": "5 Star",
+                    "location": "Srinagar",
+                    "image": "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200&auto=format&fit=crop&sig=42",
+                    "desc": "Premium luxury stay offering iconic views of the Dal Lake and mountains.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Taj+Lake+Palace+Srinagar+Kashmir"
+                }
+            ],
+            "comfort": [
+                {
+                    "name": "Grand Mumtaz Resort",
+                    "stars": "4 Star",
+                    "location": "Pahalgam",
+                    "image": "https://images.unsplash.com/photo-1554009975-d74653b849f1?q=80&w=1200&auto=format&fit=crop&sig=43",
+                    "desc": "Comfortable premium hotel overlooking the scenic Lidder River.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Grand+Mumtaz+Resort+Kashmir"
+                },
+                {
+                    "name": "Hotel Heevan",
+                    "stars": "4 Star",
+                    "location": "Srinagar",
+                    "image": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1200&auto=format&fit=crop&sig=44",
+                    "desc": "Beautiful traditional architecture with modern facilities and cozy rooms.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Hotel+Heevan+Kashmir"
+                }
+            ],
+            "budget": [
+                {
+                    "name": "Zostel Srinagar",
+                    "stars": "Budget",
+                    "location": "Srinagar",
+                    "image": "https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=1200&auto=format&fit=crop&sig=45",
+                    "desc": "Vibrant garden hostel with comfortable bunks and highly budget-friendly rates.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Zostel+Srinagar+Kashmir"
+                },
+                {
+                    "name": "Hotel Hilltop",
+                    "stars": "Budget",
+                    "location": "Gulmarg",
+                    "image": "https://images.unsplash.com/photo-1555854877-abab0e1a0006?q=80&w=1200&auto=format&fit=crop&sig=46",
+                    "desc": "Warm and clean budget accommodation close to the gondola ride point.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Hotel+Hilltop+Kashmir"
+                }
+            ]
+        }
+    },
+    "varanasi": {
+        "name": "Varanasi",
+        "type": "city",
+        "state": "Uttar Pradesh",
+        "tag": "SPIRITUAL HEART OF INDIA",
+        "description": "Varanasi, one of the world's oldest continually inhabited cities, is the spiritual capital of India. It is famous for its holy ghats along the River Ganges.",
+        "about_more": "Steeped in Hindu mythology and history, Varanasi is renowned for the mesmerizing evening Ganga Aarti, historic temples, and traditional silk weavers.",
+        "image": "https://images.unsplash.com/photo-1609137144813-98285514f04d?q=80&w=1200&auto=format&fit=crop&sig=47",
+        "about_image": "https://images.unsplash.com/photo-1431608660976-4fe58175957b?q=80&w=1200&auto=format&fit=crop&sig=48",
+        "language": "Hindi",
+        "best_time": "October - March",
+        "food": "Kachori Sabzi & Lassi",
+        "attractions": [
+            {
+                "name": "Dashashwamedh Ghat",
+                "image": "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?q=80&w=1200&auto=format&fit=crop&sig=49",
+                "desc": "The primary and busiest ghat, famous for the grand daily evening Ganga Aarti ceremony."
+            },
+            {
+                "name": "Kashi Vishwanath Temple",
+                "image": "https://images.unsplash.com/photo-1542856391-010fb87dcfed?q=80&w=1200&auto=format&fit=crop&sig=50",
+                "desc": "One of the most sacred Hindu temples dedicated to Shiva, featuring gold plated spires."
+            },
+            {
+                "name": "Sarnath",
+                "image": "https://images.unsplash.com/photo-1434064511983-18c6dae20ed5?q=80&w=1200&auto=format&fit=crop&sig=51",
+                "desc": "Located nearby, this is the historic site where Lord Buddha gave his first sermon."
+            }
+        ],
+        "hotels": {
+            "luxury": [
+                {
+                    "name": "Taj Nadesar Palace",
+                    "stars": "5 Star",
+                    "location": "Nadesar",
+                    "image": "https://images.unsplash.com/photo-1568495248636-6432b97bd949?q=80&w=1200&auto=format&fit=crop&sig=52",
+                    "desc": "Magnificent heritage palace set amidst gardens, offering royal horse-drawn carriage rides.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Taj+Nadesar+Palace+Varanasi"
+                },
+                {
+                    "name": "BrijRama Palace",
+                    "stars": "5 Star",
+                    "location": "Darbhanga Ghat",
+                    "image": "https://images.unsplash.com/photo-1529290130-4ca3753253ae?q=80&w=1200&auto=format&fit=crop&sig=53",
+                    "desc": "Heritage boutique palace hotel situated right on the banks of River Ganges.",
+                    "link": "https://www.booking.com/searchresults.html?ss=BrijRama+Palace+Varanasi"
+                }
+            ],
+            "comfort": [
+                {
+                    "name": "Radisson Hotel Varanasi",
+                    "stars": "4 Star",
+                    "location": "Cantonment",
+                    "image": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=1200&auto=format&fit=crop&sig=54",
+                    "desc": "Modern international standard hotel offering quality dining and comfortable rooms.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Radisson+Hotel+Varanasi+Varanasi"
+                },
+                {
+                    "name": "The Gateway Hotel",
+                    "stars": "4 Star",
+                    "location": "Ganges",
+                    "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop&sig=55",
+                    "desc": "Premium hotel surrounded by 40 acres of gardens, offering calm and comfort.",
+                    "link": "https://www.booking.com/searchresults.html?ss=The+Gateway+Hotel+Varanasi"
+                }
+            ],
+            "budget": [
+                {
+                    "name": "Zostel Varanasi",
+                    "stars": "Budget",
+                    "location": "Luxa Road",
+                    "image": "https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?q=80&w=1200&auto=format&fit=crop&sig=56",
+                    "desc": "Vibrant and clean backpacker hostel within walking distance to key ghats.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Zostel+Varanasi+Varanasi"
+                },
+                {
+                    "name": "Alka Hotel",
+                    "stars": "Budget",
+                    "location": "Meer Ghat",
+                    "image": "https://images.unsplash.com/photo-1534430480872-3498386e7856?q=80&w=1200&auto=format&fit=crop&sig=57",
+                    "desc": "Cozy budget hotel overlooking the Ganges with a popular vegetarian rooftop cafe.",
+                    "link": "https://www.booking.com/searchresults.html?ss=Alka+Hotel+Varanasi"
+                }
+            ]
+        }
+    }
+}

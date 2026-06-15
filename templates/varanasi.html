@@ -1,0 +1,611 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Varanasi - Amazing India</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<!-- =========================
+     NAVBAR
+========================= -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top"
+     style="background: rgba(0, 0, 0, 0.85) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding: 15px 0; z-index: 2000; width: 100%;">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold text-warning fs-2"
+           href="{% url 'home' %}"
+           style="letter-spacing: 1px; color: #ffcc00 !important; font-size: 28px !important; text-decoration: none;">
+            Amazing India
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end"
+             id="navbarNav">
+
+            <ul class="navbar-nav align-items-center gap-3">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'destination' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Destination
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'ai_planner' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        AI Planner
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Contact
+                    </a>
+                </li>
+
+                {% if user.is_authenticated %}
+
+                <li class="nav-item">
+                    <span class="text-white small" style="color: white !important; font-weight: 500;">
+                        Hi, {{ user.username }}
+                    </span>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}"
+                       class="btn btn-warning rounded-pill px-3"
+                       style="color: black !important; background-color: #ffcc00 !important; border: none; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Logout
+                    </a>
+                </li>
+
+                {% else %}
+
+                <li class="nav-item">
+                    <a href="{% url 'login' %}"
+                       class="btn btn-warning rounded-pill px-3"
+                       style="color: black !important; background-color: #ffcc00 !important; border: none; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Login
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'signup' %}"
+                       class="btn btn-outline-light rounded-pill px-3"
+                       style="color: white !important; border: 1px solid white !important; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Sign Up
+                    </a>
+                </li>
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+    <section class="hero varanasi-bg">
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+
+      <h1>Welcome To Varanasi</h1>
+
+      <p>
+        Discover the spiritual capital of India,
+        famous for sacred ghats, temples,
+        Ganga Aarti, and ancient traditions.
+      </p>
+
+     
+
+    </div>
+
+  </section>
+
+<!-- Live Travel Status & Alerts Section -->
+<section class="live-alerts-section py-4" style="background: #fff6eb; border-bottom: 1px solid rgba(255, 152, 0, 0.15);">
+  <div class="container">
+    <div class="d-flex align-items-center gap-2 mb-3">
+      <span class="pulse-indicator"></span>
+      <h4 class="fw-bold mb-0 text-dark" style="font-size: 20px; letter-spacing: 0.5px;">Live Travel Status & Alerts</h4>
+    </div>
+    
+    <div class="row g-3">
+      <!-- Weather Card -->
+      <div class="col-md-3">
+        <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+          <div class="d-flex align-items-center gap-3">
+            <div class="alert-icon-box weather-bg"><i class="fa-solid fa-cloud-sun"></i></div>
+            <div>
+              <h5 class="fw-bold mb-1 small text-muted text-uppercase" style="font-size: 11px;">Local Weather</h5>
+              <p class="mb-0 text-dark small font-weight-bold" style="font-size: 13px;">{{ alerts.weather }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Crowd Warning Card -->
+      <div class="col-md-3">
+        <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+          <div class="d-flex align-items-center gap-3">
+            <div class="alert-icon-box crowd-bg"><i class="fa-solid fa-users-line"></i></div>
+            <div>
+              <h5 class="fw-bold mb-1 small text-muted text-uppercase" style="font-size: 11px;">Crowd Status</h5>
+              <p class="mb-0 text-dark small font-weight-bold" style="font-size: 13px;">{{ alerts.crowd }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Safety Card -->
+      <div class="col-md-3">
+        <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+          <div class="d-flex align-items-center gap-3">
+            <div class="alert-icon-box safety-bg"><i class="fa-solid fa-shield-halved"></i></div>
+            <div>
+              <h5 class="fw-bold mb-1 small text-muted text-uppercase" style="font-size: 11px;">Safety Updates</h5>
+              <p class="mb-0 text-dark small font-weight-bold" style="font-size: 13px;">{{ alerts.safety }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Emergency Contacts Card -->
+      <div class="col-md-3">
+        <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+          <div class="d-flex align-items-center gap-3">
+            <div class="alert-icon-box emergency-bg"><i class="fa-solid fa-truck-medical"></i></div>
+            <div>
+              <h5 class="fw-bold mb-1 small text-muted text-uppercase" style="font-size: 11px;">Emergency Help</h5>
+              <p class="mb-1 text-dark small" style="font-size: 12px;"><strong>Hospital:</strong> {{ alerts.hospital }}</p>
+              <p class="mb-0 text-dark small" style="font-size: 12px;"><strong>Police:</strong> {{ alerts.police }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Live Alerts CSS overrides -->
+<style>
+
+    body {
+        font-family: 'Poppins', sans-serif !important;
+    }
+
+        body {
+            padding-top: 85px !important;
+        }
+
+  .pulse-indicator {
+    width: 10px;
+    height: 10px;
+    background-color: #ff9800;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);
+    animation: pulse 1.6s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);
+    }
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 6px rgba(255, 152, 0, 0);
+    }
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 152, 0, 0);
+    }
+  }
+
+  .alert-status-card {
+    background: white;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    border-left: 4px solid #ff9800 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+  }
+
+  .alert-status-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 152, 0, 0.1) !important;
+  }
+
+  .alert-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .weather-bg { background: #e3f2fd; color: #1e88e5; }
+  .crowd-bg { background: #fff3e0; color: #fb8c00; }
+  .safety-bg { background: #e8f5e9; color: #43a047; }
+  .emergency-bg { background: #ffebee; color: #e53935; }
+  .varanasi-bg{
+    background: url('{% static 'images/varanasi image1.jpg' %}') no-repeat center center/cover !important;
+  }
+</style>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+
+    <div class="about-image">
+      <img
+        src="{% static 'images/varanasi image1.jpg' %}"
+        alt="Varanasi">
+    </div>
+
+    <div class="about-content">
+
+      <span class="section-tag">SPIRITUAL DESTINATION</span>
+
+      <h2>About Varanasi</h2>
+
+      <p>
+        Varanasi is one of the oldest living cities in the world
+        and one of the holiest places in India.
+        Situated on the banks of the River Ganga,
+        the city attracts millions of pilgrims and tourists every year.
+      </p>
+
+      <p>
+        Known for its spiritual atmosphere, ancient temples,
+        evening Ganga Aarti, and sacred ghats,
+        Varanasi offers a truly unforgettable cultural experience.
+      </p>
+
+      <div class="info-grid">
+
+        <div class="info-card">
+          <i class="fa-solid fa-location-dot"></i>
+          <h3>State</h3>
+          <p>Uttar Pradesh</p>
+        </div>
+
+        <div class="info-card">
+          <i class="fa-solid fa-language"></i>
+          <h3>Language</h3>
+          <p>Hindi</p>
+        </div>
+
+        <div class="info-card">
+          <i class="fa-solid fa-sun"></i>
+          <h3>Best Time</h3>
+          <p>October - March</p>
+        </div>
+
+        <div class="info-card">
+          <i class="fa-solid fa-utensils"></i>
+          <h3>Famous Food</h3>
+          <p>Kachori & Jalebi</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Tourist Places -->
+  <section class="places" id="places">
+
+    <div class="section-title">
+      <h2>Top Tourist Attractions</h2>
+      <p>Best places to visit in Varanasi</p>
+    </div>
+
+    <div class="place-container">
+
+      <!-- Card 1 -->
+      <div class="place-card">
+
+        <img
+          src="{% static 'images/varanasi image1.jpg' %}"
+          alt="Dashashwamedh Ghat">
+
+        <div class="place-content">
+          <h3>Dashashwamedh Ghat</h3>
+
+          <p>
+            The most famous ghat in Varanasi,
+            known for the spectacular evening Ganga Aarti.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Card 2 -->
+      <div class="place-card">
+
+        <img
+          src="Image Not Available"
+          alt="Kashi Vishwanath Temple">
+
+        <div class="place-content">
+          <h3>Kashi Vishwanath Temple</h3>
+
+          <p>
+            One of the most sacred Hindu temples
+            dedicated to Lord Shiva.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Card 3 -->
+      <div class="place-card">
+
+        <img
+          src="Image Not Available"
+          alt="Sarnath">
+
+        <div class="place-content">
+          <h3>Sarnath</h3>
+
+          <p>
+            An important Buddhist pilgrimage site
+            where Lord Buddha delivered his first sermon.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+  <section class="varanasi-hotels">
+
+    <div class="section-title">
+        <h2>Best Hotels In Varanasi</h2>
+        <p>Experience spirituality with luxury, comfort, and budget stays</p>
+    </div>
+
+    <!-- LUXURY -->
+    <h1 class="hotel-category">Luxury Hotels</h1>
+
+    <div class="hotel-container">
+
+        <div class="hotel-card">
+            <img src="Image Not Available">
+            <div class="hotel-content">
+                <h3>Taj Nadesar Palace</h3>
+                <p>Royal luxury heritage hotel with lush gardens and premium services.</p>
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> 5 Star</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Nadesar</span>
+                </div>
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Taj+Nadesar+Palace+Varanasi', '_blank')">Book Now</button>
+            </div>
+        </div>
+
+        <div class="hotel-card">
+            <img src="Image Not Available">
+            <div class="hotel-content">
+                <h3>Brijrama Palace</h3>
+                <p>Historic palace hotel located on the ghats with stunning Ganga views.</p>
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> 5 Star</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Dashashwamedh Ghat</span>
+                </div>
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Brijrama+Palace+Varanasi', '_blank')">Book Now</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- COMFORT -->
+    <h1 class="hotel-category">Comfort Hotels</h1>
+
+    <div class="hotel-container">
+
+        <div class="hotel-card">
+            <img src="Image Not Available">
+            <div class="hotel-content">
+                <h3>Hotel Clarks</h3>
+                <p>Comfortable stay with pool, modern rooms, and great dining options.</p>
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> 4 Star</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Cantonment</span>
+                </div>
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Hotel+Clarks+Varanasi', '_blank')">Book Now</button>
+            </div>
+        </div>
+
+        <div class="hotel-card">
+            <img src="Image Not Available">
+            <div class="hotel-content">
+                <h3>Rivatas by Ideal</h3>
+                <p>Modern hotel offering comfort, spa, and convenient city access.</p>
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> 4 Star</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Varanasi Junction</span>
+                </div>
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Rivatas+by+Ideal+Varanasi', '_blank')">Book Now</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- AFFORDABLE -->
+    <h1 class="hotel-category">Affordable Hotels</h1>
+
+    <div class="hotel-container">
+
+        <div class="hotel-card">
+            <img src="Image Not Available">
+            <div class="hotel-content">
+                <h3>Zostel Varanasi</h3>
+                <p>Popular budget hostel with social vibe near the ghats.</p>
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> Budget</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Assi Ghat</span>
+                </div>
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Zostel+Varanasi+Varanasi', '_blank')">Book Now</button>
+            </div>
+        </div>
+
+        <div class="hotel-card">
+            <img src="Image Not Available">
+            <div class="hotel-content">
+                <h3>Hotel Alka</h3>
+                <p>Affordable stay with direct Ganga views and traditional ambiance.</p>
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> Budget</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Meer Ghat</span>
+                </div>
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Hotel+Alka+Varanasi', '_blank')">Book Now</button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Reviews Section -->
+{% include 'reviews_section.html' %}
+
+  <!-- Footer -->
+  <footer>
+
+    <h2>Amazing India</h2>
+
+    <p>
+      Experience the spirituality, culture,
+      and timeless traditions of Varanasi.
+    </p>
+
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- GRACEFUL IMAGE FALLBACK SCRIPT -->
+<style>
+.image-not-available-placeholder {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2c2c35 0%, #1a1a20 100%) !important;
+    color: #ffcc00 !important;
+    border: 1px solid rgba(255, 204, 0, 0.15) !important;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif !important;
+}
+.image-not-available-placeholder i {
+    font-size: 32px;
+    color: #ffcc00;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.3));
+}
+.image-not-available-placeholder span {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    function createPlaceholder(img) {
+        if (img.parentNode && !img.parentNode.querySelector('.image-not-available-placeholder')) {
+            const placeholder = document.createElement("div");
+            placeholder.className = "image-not-available-placeholder";
+            
+            // Mirror classes and styles of the original image
+            if (img.className) {
+                placeholder.classList.add(...img.classList);
+            }
+            
+            // Set styles dynamically
+            const style = window.getComputedStyle(img);
+            placeholder.style.width = img.style.width || (img.offsetWidth ? img.offsetWidth + 'px' : '100%');
+            
+            // Get height with fallback
+            let height = img.style.height || style.height;
+            if (!height || height === 'auto' || height === '0px') {
+                height = img.offsetHeight ? img.offsetHeight + 'px' : '240px';
+            }
+            placeholder.style.height = height;
+            placeholder.style.borderRadius = style.borderRadius || '16px';
+            placeholder.style.margin = style.margin;
+            placeholder.style.display = 'flex';
+            
+            placeholder.innerHTML = `
+                <i class="fa-solid fa-image-slash"></i>
+                <span>Image Not Available</span>
+            `;
+            
+            img.style.display = "none";
+            img.parentNode.insertBefore(placeholder, img);
+        }
+    }
+
+    // Process all images
+    document.querySelectorAll("img").forEach(function(img) {
+        const src = img.getAttribute("src");
+        if (!src || src === "Image Not Available" || src.includes("Image%20Not%20Available")) {
+            createPlaceholder(img);
+        } else {
+            img.addEventListener("error", function() {
+                createPlaceholder(img);
+            });
+            if (img.complete && img.naturalWidth === 0) {
+                createPlaceholder(img);
+            }
+        }
+    });
+});
+</script>
+
+</body>
+</html>

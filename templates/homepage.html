@@ -1,0 +1,1282 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazing India</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            overflow-x:hidden;
+            font-family:Arial, sans-serif;
+        }
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+
+        .starting{
+            background:url("{% static 'images/bg.png' %}") center/cover no-repeat;
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            position:relative;
+        }
+
+        .starting::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            background:rgba(0,0,0,0.5);
+        }
+
+        .overlay-card{
+            position:relative;
+            z-index:2;
+            color:white;
+            padding:40px;
+        }
+
+        .overlay-card h1{
+            font-size:70px;
+            font-weight:bold;
+        }
+
+        .overlay-card p{
+            font-size:22px;
+            margin-bottom:30px;
+        }
+
+        /* =========================
+           SEARCH BOX
+        ========================= */
+
+        .search-box{
+            display:flex;
+            justify-content:center;
+        }
+
+        .search-form{
+            display:flex;
+            gap:12px;
+            flex-wrap:wrap;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .search-form input{
+            width:380px;
+            padding:14px 18px;
+            border:none;
+            border-radius:40px;
+            outline:none;
+            font-size:16px;
+        }
+
+        .search-form button{
+            padding:14px 30px;
+            border:none;
+            border-radius:40px;
+            background:#ff9800;
+            color:white;
+            font-weight:bold;
+            transition:0.3s;
+        }
+
+        .search-form button:hover{
+            background:#e68900;
+        }
+
+        /* =========================
+           AUTOCOMPLETE
+        ========================= */
+
+        .suggestions-list {
+            position: absolute;
+            top: 105%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 12px;
+            z-index: 1050;
+            max-height: 280px;
+            overflow-y: auto;
+            border: 1px solid rgba(0,0,0,0.12);
+            text-align: left;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .suggestion-item {
+            padding: 12px 18px;
+            cursor: pointer;
+            border-bottom: 1px solid #f2f2f2;
+            transition: all 0.2s;
+            font-size: 14px;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .suggestion-item:hover {
+            background: #fff4dd;
+        }
+
+        .suggestion-item i {
+            font-size: 16px;
+            margin-right: 12px;
+            color: #ff9800;
+        }
+
+        .suggestion-type {
+            margin-left: auto;
+            font-size: 11px;
+            background: #e9ecef;
+            color: #495057;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           SLIDER SECTION
+        ========================= */
+
+        .slider-section{
+            padding:60px 0;
+            background:#f8f9fa;
+        }
+
+        .slider-container{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:25px;
+            width:90%;
+            margin:auto;
+        }
+
+        .place-card{
+            position:relative;
+            overflow:hidden;
+            border-radius:20px;
+            cursor:pointer;
+        }
+
+        .place-card img{
+            width:100%;
+            height:320px;
+            object-fit:cover;
+            transition:0.4s;
+        }
+
+        .place-card:hover img{
+            transform:scale(1.1);
+        }
+
+        .overlay{
+            position:absolute;
+            inset:0;
+            background:rgba(0,0,0,0.4);
+            display:flex;
+            align-items:end;
+            padding:20px;
+            color:white;
+        }
+
+        /* =========================
+           SECTION TITLE
+        ========================= */
+
+        .section-title{
+            text-align:center;
+            margin-bottom:40px;
+        }
+
+        .section-title h2{
+            font-size:42px;
+            font-weight:bold;
+        }
+
+        /* =========================
+           DESTINATION CARD
+        ========================= */
+
+        .destination-card{
+            border-radius:18px;
+            overflow:hidden;
+            transition:0.4s;
+            background:white;
+        }
+
+        .destination-card:hover{
+            transform:translateY(-10px);
+        }
+
+        .destination-card img{
+            width:100%;
+            height:250px;
+            object-fit:cover;
+        }
+
+        .destination-card .card-body{
+            padding:20px;
+            text-align:center;
+        }
+
+        /* =========================
+           FESTIVAL SECTION
+        ========================= */
+
+        .festival-box{
+            position:relative;
+            overflow:hidden;
+            border-radius:20px;
+        }
+
+        .festival-box img{
+            width:100%;
+            height:350px;
+            object-fit:cover;
+        }
+
+        .festival-overlay{
+            position:absolute;
+            inset:0;
+            background:rgba(0,0,0,0.4);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            color:white;
+            font-size:30px;
+            font-weight:bold;
+        }
+
+        /* =========================
+           COMMUNITY SECTION
+        ========================= */
+
+        .community-card{
+            background:white;
+            padding:30px;
+            border-radius:20px;
+            transition:0.3s;
+            box-shadow:0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .community-card:hover{
+            transform:translateY(-8px);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer{
+            background:#111;
+            color:white;
+            padding:60px 0 20px;
+        }
+
+        .social-icons a{
+            color:white;
+            margin-right:15px;
+            font-size:22px;
+            transition:0.3s;
+        }
+
+        .social-icons a:hover{
+            color:#ff9800;
+        }
+
+        .footer-bottom{
+            text-align:center;
+            margin-top:30px;
+            border-top:1px solid rgba(255,255,255,0.1);
+            padding-top:20px;
+        }
+
+        /* =========================
+           CRAFT SECTION
+        ========================= */
+
+        .craft-slider-track {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            padding: 15px 5px;
+            width: 100%;
+        }
+
+        .craft-slider-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .craft-card-slide {
+            flex: 0 0 280px;
+            max-width: 280px;
+        }
+
+        .craft-slider-wrapper {
+            position: relative;
+            padding: 0 10px;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #ff9800, #ff5722);
+            border: none;
+            border-radius: 50%;
+            width: 46px;
+            height: 46px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .prev-arrow {
+            left: -20px;
+        }
+
+        .next-arrow {
+            right: -20px;
+        }
+
+        .craft-card {
+            border: none;
+            border-radius: 20px !important;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            background: white;
+            cursor: pointer;
+        }
+
+        .craft-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .craft-card img {
+            height: 220px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .craft-card .state {
+            font-size: 13px;
+            color: #ff9800;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .craft-card .craft-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #222;
+        }
+
+        @media(max-width:768px){
+
+            .overlay-card h1{
+                font-size:45px;
+            }
+
+            .search-form input{
+                width:100%;
+            }
+
+            .slider-arrow{
+                display:none;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<!-- =========================
+     NAVBAR
+========================= -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top"
+     style="background: rgba(0, 0, 0, 0.85) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding: 15px 0; z-index: 2000; width: 100%;">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold text-warning fs-2"
+           href="{% url 'home' %}"
+           style="letter-spacing: 1px; color: #ffcc00 !important; font-size: 28px !important; text-decoration: none;">
+            Amazing India
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end"
+             id="navbarNav">
+
+            <ul class="navbar-nav align-items-center gap-3">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'destination' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Destination
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'ai_planner' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        AI Planner
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Contact
+                    </a>
+                </li>
+
+                {% if user.is_authenticated %}
+
+                <li class="nav-item">
+                    <span class="text-white small" style="color: white !important; font-weight: 500;">
+                        Hi, {{ user.username }}
+                    </span>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}"
+                       class="btn btn-warning rounded-pill px-3"
+                       style="color: black !important; background-color: #ffcc00 !important; border: none; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Logout
+                    </a>
+                </li>
+
+                {% else %}
+
+                <li class="nav-item">
+                    <a href="{% url 'login' %}"
+                       class="btn btn-warning rounded-pill px-3"
+                       style="color: black !important; background-color: #ffcc00 !important; border: none; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Login
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'signup' %}"
+                       class="btn btn-outline-light rounded-pill px-3"
+                       style="color: white !important; border: 1px solid white !important; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Sign Up
+                    </a>
+                </li>
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- =========================
+     HERO SECTION
+========================= -->
+
+<section>
+
+    <div class="starting" style="background: url('{% static 'images/bg.png' %}') center/cover no-repeat; min-height: 100vh; display: flex; justify-content: center; align-items: center; position: relative;">
+
+        <!-- Dark Overlay -->
+        <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.55); z-index: 1;"></div>
+
+        <div class="overlay-card text-center" style="position: relative; z-index: 2; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 24px; padding: 45px 35px; width: 90%; max-width: 580px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4); color: white;">
+
+            <h1 class="fw-bold mb-2" style="font-size: 52px; letter-spacing: 1px;">Amazing India</h1>
+
+            <p style="font-size: 20px; color: #f8f9fa; font-weight: 300; margin-bottom: 35px; letter-spacing: 0.5px;">Let's Travel Around India</p>
+
+            <div class="search-box" style="background: transparent; border: none; padding: 0; box-shadow: none;">
+
+                <form class="search-form"
+                      id="search-form"
+                      action="{% url 'destination' %}"
+                      method="GET"
+                      style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; align-items: center; width: 100%;">
+
+                    <div class="position-relative" style="flex: 1; min-width: 280px;">
+
+                        <input type="text"
+                               id="search-input"
+                               name="q"
+                               placeholder="Search state or city..."
+                               autocomplete="off"
+                               required
+                               style="width: 100%; padding: 15px 22px; border: none; border-radius: 30px; outline: none; font-size: 16px; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.15); transition: 0.3s;">
+
+                        <div id="suggestions-dropdown"
+                             class="suggestions-list d-none"
+                             style="position: absolute; top: 110%; left: 0; right: 0; background: white; border-radius: 14px; z-index: 1050; max-height: 280px; overflow-y: auto; border: 1px solid rgba(0,0,0,0.08); text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        </div>
+
+                    </div>
+
+                    <button type="submit" style="padding: 15px 36px; border: none; border-radius: 30px; background: linear-gradient(135deg, #ff9800, #ff5722); color: white; font-weight: bold; font-size: 16px; transition: 0.3s; box-shadow: 0 4px 15px rgba(255,152,0,0.3); cursor: pointer;">
+                        Search
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     LIVE ALERTS HELP BAR
+========================= -->
+
+<section class="py-3" style="background: #fffbf4; border-bottom: 1px solid rgba(255,152,0,0.12); position: relative; z-index: 5;">
+
+    <div class="container text-center">
+
+        <div class="d-flex flex-wrap justify-content-center gap-4 align-items-center">
+
+            <div class="d-flex align-items-center gap-2">
+                <span style="display: inline-block; width: 8px; height: 8px; background: #28a745; border-radius: 50%; box-shadow: 0 0 8px #28a745;"></span>
+                <span class="fw-bold text-dark" style="font-size: 13px; letter-spacing: 0.3px;">Real-Time Weather Alerts</span>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                <span style="display: inline-block; width: 8px; height: 8px; background: #28a745; border-radius: 50%; box-shadow: 0 0 8px #28a745;"></span>
+                <span class="fw-bold text-dark" style="font-size: 13px; letter-spacing: 0.3px;">Verified Tourist Police Contacts</span>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                <span style="display: inline-block; width: 8px; height: 8px; background: #28a745; border-radius: 50%; box-shadow: 0 0 8px #28a745;"></span>
+                <span class="fw-bold text-dark" style="font-size: 13px; letter-spacing: 0.3px;">Direct Hotel Booking Integrations</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     SLIDER SECTION (Top Attractions)
+========================= -->
+
+<section class="py-5" style="background: #f8f9fa;">
+
+    <div class="container">
+
+        <div class="section-title text-center mb-5">
+            <h2 class="fw-bold" style="font-size: 38px; color: #222; text-transform: uppercase; letter-spacing: 1px;">Top Attractions</h2>
+            <p style="color: #ff9800; font-weight: 600; font-size: 16px; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 5px;">Must-Visit Landmarks of India</p>
+        </div>
+
+        <div class="slider-container" style="display: flex; gap: 24px; overflow-x: auto; padding: 15px 5px; scrollbar-width: thin; scrollbar-color: #ff9800 #eaeaea;">
+
+            <!-- CARD 1 -->
+            <a class="place-card"
+               href="{% url 'item_detail' 'mahabodhi_temple' %}"
+               style="display: block; text-decoration: none; position: relative; width: 280px; height: 420px; border-radius: 20px; overflow: hidden; flex-shrink: 0; box-shadow: 0 10px 20px rgba(0,0,0,0.06); transition: 0.4s;">
+                <img src="{% static 'images/section image1.jpg' %}" alt="Mahabodhi Temple" style="width: 100%; height: 100%; object-fit: cover; transition: 0.4s;">
+                <div class="overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); display: flex; align-items: flex-end; padding: 25px; color: white;">
+                    <h3 class="fw-bold m-0" style="font-size: 24px; letter-spacing: 0.5px;">Mahabodhi Temple</h3>
+                </div>
+            </a>
+
+            <!-- CARD 2 -->
+            <a class="place-card"
+               href="{% url 'item_detail' 'anjuna_beach' %}"
+               style="display: block; text-decoration: none; position: relative; width: 280px; height: 420px; border-radius: 20px; overflow: hidden; flex-shrink: 0; box-shadow: 0 10px 20px rgba(0,0,0,0.06); transition: 0.4s;">
+                <img src="{% static 'images/anuja beach.jpg' %}" alt="Anjuna Beach" style="width: 100%; height: 100%; object-fit: cover; transition: 0.4s;">
+                <div class="overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); display: flex; align-items: flex-end; padding: 25px; color: white;">
+                    <h3 class="fw-bold m-0" style="font-size: 24px; letter-spacing: 0.5px;">Anjuna Beach</h3>
+                </div>
+            </a>
+
+            <!-- CARD 3 -->
+            <a class="place-card"
+               href="{% url 'item_detail' 'gateway_of_india' %}"
+               style="display: block; text-decoration: none; position: relative; width: 280px; height: 420px; border-radius: 20px; overflow: hidden; flex-shrink: 0; box-shadow: 0 10px 20px rgba(0,0,0,0.06); transition: 0.4s;">
+                <img src="{% static 'images/section image2.webp' %}" alt="Gateway Of India" style="width: 100%; height: 100%; object-fit: cover; transition: 0.4s;">
+                <div class="overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); display: flex; align-items: flex-end; padding: 25px; color: white;">
+                    <h3 class="fw-bold m-0" style="font-size: 24px; letter-spacing: 0.5px;">Gateway Of India</h3>
+                </div>
+            </a>
+
+            <!-- CARD 4 -->
+            <a class="place-card"
+               href="{% url 'item_detail' 'naida_caves' %}"
+               style="display: block; text-decoration: none; position: relative; width: 280px; height: 420px; border-radius: 20px; overflow: hidden; flex-shrink: 0; box-shadow: 0 10px 20px rgba(0,0,0,0.06); transition: 0.4s;">
+                <img src="{% static 'images/section image3.jpg' %}" alt="Naida Caves" style="width: 100%; height: 100%; object-fit: cover; transition: 0.4s;">
+                <div class="overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); display: flex; align-items: flex-end; padding: 25px; color: white;">
+                    <h3 class="fw-bold m-0" style="font-size: 24px; letter-spacing: 0.5px;">Naida Caves</h3>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     TRADITIONAL CRAFT SECTION
+========================= -->
+
+<section class="py-5" style="background: #ffffff; border-top: 1px solid #eaeaea; border-bottom: 1px solid #eaeaea;">
+
+    <div class="container position-relative" style="max-width: 1200px;">
+
+        <div class="section-title text-center mb-5">
+            <h2 class="fw-bold" style="font-size: 38px; color: #222; text-transform: uppercase; letter-spacing: 1px;">Traditional Crafts</h2>
+            <p style="color: #ff9800; font-weight: 600; font-size: 16px; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 5px;">Of Timeless Indian Heritage</p>
+        </div>
+
+        <div class="craft-slider-wrapper" style="position: relative; display: flex; align-items: center; padding: 0 40px;">
+
+            <button class="slider-arrow prev-arrow" id="craft-prev-btn" aria-label="Previous Slide">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="craft-slider-track" id="craft-slider-track">
+
+                <!-- CARD 1 -->
+                <div class="craft-card-slide">
+                    <a href="{% url 'item_detail' 'phulkari_embroidery' %}" class="text-decoration-none text-dark d-block h-100">
+                        <div class="card craft-card h-100 shadow-sm">
+                            <img src="{% static 'images/traditional section 1.avif' %}" alt="Punjab Phulkari">
+                            <div class="card-body" style="background: #fff9f2; padding: 20px;">
+                                <div class="state">Punjab</div>
+                                <h5 class="craft-name fw-bold mb-0">Phulkari Embroidery</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="craft-card-slide">
+                    <a href="{% url 'item_detail' 'bastar_dhokra_art' %}" class="text-decoration-none text-dark d-block h-100">
+                        <div class="card craft-card h-100 shadow-sm">
+                            <img src="{% static 'images/traditional section 2.avif' %}" alt="Chhattisgarh Bastar Dhokra">
+                            <div class="card-body" style="background: #fff9f2; padding: 20px;">
+                                <div class="state">Chhattisgarh</div>
+                                <h5 class="craft-name fw-bold mb-0">Bastar Dhokra Art</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="craft-card-slide">
+                    <a href="{% url 'item_detail' 'patan_patola_silk' %}" class="text-decoration-none text-dark d-block h-100">
+                        <div class="card craft-card h-100 shadow-sm">
+                            <img src="{% static 'images/traditional section 3.avif' %}" alt="Gujarat Patan Patola">
+                            <div class="card-body" style="background: #fff9f2; padding: 20px;">
+                                <div class="state">Gujarat</div>
+                                <h5 class="craft-name fw-bold mb-0">Patan Patola Silk</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- CARD 4 -->
+                <div class="craft-card-slide">
+                    <a href="{% url 'item_detail' 'pashmina_shawls' %}" class="text-decoration-none text-dark d-block h-100">
+                        <div class="card craft-card h-100 shadow-sm">
+                            <img src="{% static 'images/traditional section 4.avif' %}" alt="Kashmir Pashmina">
+                            <div class="card-body" style="background: #fff9f2; padding: 20px;">
+                                <div class="state">Kashmir</div>
+                                <h5 class="craft-name fw-bold mb-0">Pashmina Shawls</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- CARD 5 -->
+                <div class="craft-card-slide">
+                    <a href="{% url 'item_detail' 'blue_pottery' %}" class="text-decoration-none text-dark d-block h-100">
+                        <div class="card craft-card h-100 shadow-sm">
+                            <img src="{% static 'images/jaipur image2.jpg' %}" alt="Rajasthan Blue Pottery">
+                            <div class="card-body" style="background: #fff9f2; padding: 20px;">
+                                <div class="state">Rajasthan</div>
+                                <h5 class="craft-name fw-bold mb-0">Blue Pottery</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- CARD 6 -->
+                <div class="craft-card-slide">
+                    <a href="{% url 'item_detail' 'banarasi_silk' %}" class="text-decoration-none text-dark d-block h-100">
+                        <div class="card craft-card h-100 shadow-sm">
+                            <img src="{% static 'images/varanasi image1.jpg' %}" alt="Uttar Pradesh Banarasi Silk">
+                            <div class="card-body" style="background: #fff9f2; padding: 20px;">
+                                <div class="state">Uttar Pradesh</div>
+                                <h5 class="craft-name fw-bold mb-0">Banarasi Silk</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <button class="slider-arrow next-arrow" id="craft-next-btn" aria-label="Next Slide">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     RECOMMENDED DESTINATIONS
+========================= -->
+
+<section class="py-5" style="background: #f8f9fa;">
+
+    <div class="container">
+
+        <div class="section-title text-center mb-5">
+            <h2 class="fw-bold" style="font-size: 38px; color: #222; text-transform: uppercase; letter-spacing: 1px;">Recommended For You</h2>
+            <p style="color: #ff9800; font-weight: 600; font-size: 16px; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 5px;">Curated Travel Escapes</p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-3 col-sm-6">
+                <a href="{% url 'jaipur' %}" class="text-decoration-none text-dark d-block h-100">
+                    <div class="destination-card shadow-sm" style="border-radius: 18px; overflow: hidden; background: white; transition: 0.3s; height: 100%;">
+                        <img src="{% static 'images/jaipur image1.webp' %}" alt="Jaipur" style="width: 100%; height: 220px; object-fit: cover; transition: 0.5s;">
+                        <div class="card-body" style="padding: 20px; text-align: center;">
+                            <h5 class="fw-bold mb-1" style="font-size: 18px; color: #222;">Jaipur</h5>
+                            <p class="text-muted mb-0" style="font-size: 14px;">Royal Heritage Experience</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <a href="{% url 'kashmir' %}" class="text-decoration-none text-dark d-block h-100">
+                    <div class="destination-card shadow-sm" style="border-radius: 18px; overflow: hidden; background: white; transition: 0.3s; height: 100%;">
+                        <img src="{% static 'images/kashmir image1.jpg' %}" alt="Kashmir" style="width: 100%; height: 220px; object-fit: cover; transition: 0.5s;">
+                        <div class="card-body" style="padding: 20px; text-align: center;">
+                            <h5 class="fw-bold mb-1" style="font-size: 18px; color: #222;">Kashmir</h5>
+                            <p class="text-muted mb-0" style="font-size: 14px;">Heaven On Earth</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <a href="{% url 'varanasi' %}" class="text-decoration-none text-dark d-block h-100">
+                    <div class="destination-card shadow-sm" style="border-radius: 18px; overflow: hidden; background: white; transition: 0.3s; height: 100%;">
+                        <img src="{% static 'images/varanasi image1.jpg' %}" alt="Varanasi" style="width: 100%; height: 220px; object-fit: cover; transition: 0.5s;">
+                        <div class="card-body" style="padding: 20px; text-align: center;">
+                            <h5 class="fw-bold mb-1" style="font-size: 18px; color: #222;">Varanasi</h5>
+                            <p class="text-muted mb-0" style="font-size: 14px;">Spiritual Tourism</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <a href="{% url 'goa' %}" class="text-decoration-none text-dark d-block h-100">
+                    <div class="destination-card shadow-sm" style="border-radius: 18px; overflow: hidden; background: white; transition: 0.3s; height: 100%;">
+                        <img src="{% static 'images/goa image1.webp' %}" alt="Goa" style="width: 100%; height: 220px; object-fit: cover; transition: 0.5s;">
+                        <div class="card-body" style="padding: 20px; text-align: center;">
+                            <h5 class="fw-bold mb-1" style="font-size: 18px; color: #222;">Goa</h5>
+                            <p class="text-muted mb-0" style="font-size: 14px;">Beach Nightlife</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     LIVE FESTIVALS SECTION
+========================= -->
+
+<section class="py-5" style="background: #ffffff; border-top: 1px solid #eaeaea;">
+
+    <div class="container">
+
+        <div class="section-title text-center mb-5">
+            <h2 class="fw-bold" style="font-size: 38px; color: #222; text-transform: uppercase; letter-spacing: 1px;">Live Festivals</h2>
+            <p style="color: #ff9800; font-weight: 600; font-size: 16px; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 5px;">Experience India's Cultural Celebrations</p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <a href="{% url 'item_detail' 'diwali_festival' %}" class="text-decoration-none text-white d-block">
+                    <div class="festival-box shadow-sm" style="position: relative; overflow: hidden; border-radius: 18px; height: 350px; transition: 0.4s;">
+                        <img src="{% static 'images/festival image 1.jpg' %}" alt="Diwali in Jaipur" style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s;">
+                        <div class="festival-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)); display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; color: white;">
+                            <span style="font-size: 11px; color: #ffcc00; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 5px;">Jaipur, Rajasthan</span>
+                            <h3 class="fw-bold mb-1" style="font-size: 22px;">Diwali Festival</h3>
+                            <p class="mb-0 text-white-50" style="font-size: 13px;">The grand festival of lights, featuring stunning street decorations and traditional bazaars.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <a href="{% url 'item_detail' 'hornbill_festival' %}" class="text-decoration-none text-white d-block">
+                    <div class="festival-box shadow-sm" style="position: relative; overflow: hidden; border-radius: 18px; height: 350px; transition: 0.4s;">
+                        <img src="{% static 'images/festival image 2.webp' %}" alt="Hornbill Festival" style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s;">
+                        <div class="festival-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)); display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; color: white;">
+                            <span style="font-size: 11px; color: #ffcc00; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 5px;">Kohima, Nagaland</span>
+                            <h3 class="fw-bold mb-1" style="font-size: 22px;">Hornbill Festival</h3>
+                            <p class="mb-0 text-white-50" style="font-size: 13px;">A magnificent celebration of Naga tribal heritage, dance, music, and traditional crafts.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <a href="{% url 'item_detail' 'durga_puja' %}" class="text-decoration-none text-white d-block">
+                    <div class="festival-box shadow-sm" style="position: relative; overflow: hidden; border-radius: 18px; height: 350px; transition: 0.4s;">
+                        <img src="{% static 'images/festival image 3.webp' %}" alt="Durga Puja" style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s;">
+                        <div class="festival-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)); display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; color: white;">
+                            <span style="font-size: 11px; color: #ffcc00; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 5px;">Kolkata, West Bengal</span>
+                            <h3 class="fw-bold mb-1" style="font-size: 22px;">Durga Puja</h3>
+                            <p class="mb-0 text-white-50" style="font-size: 13px;">Witness spectacular street art installations (pandals) and drum beats of traditional Dhak.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     TRAVELER COMMUNITY SECTION
+========================= -->
+
+<section class="py-5" style="background: #f8f9fa; border-top: 1px solid #eaeaea;">
+
+    <div class="container">
+
+        <div class="section-title text-center mb-5">
+            <h2 class="fw-bold" style="font-size: 38px; color: #222; text-transform: uppercase; letter-spacing: 1px;">Traveler Stories</h2>
+            <p style="color: #ff9800; font-weight: 600; font-size: 16px; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 5px;">Hear From Our Adventurers</p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card community-card h-100 p-4 border-0 shadow-sm" style="background: white; border-radius: 18px; transition: 0.3s;">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="avatar-circle" style="width: 45px; height: 45px; border-radius: 50%; background: #ff9800; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 16px;">R</div>
+                        <div>
+                            <h5 class="fw-bold mb-0" style="font-size: 15px;">Rithick Prabhu</h5>
+                            <small class="text-muted" style="font-size: 12px;">Visited Taj Mahal, Agra</small>
+                        </div>
+                    </div>
+                    <div class="stars mb-2" style="color: #ffcc00; font-size: 13px;">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-muted mb-0" style="font-size: 13px; line-height: 1.6;">"Absolutely breathtaking! Viewing the Taj Mahal at sunrise was a dream come true. The local tour guide recommendation was spot on, and the Tajganj police security made us feel very safe."</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card community-card h-100 p-4 border-0 shadow-sm" style="background: white; border-radius: 18px; transition: 0.3s;">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="avatar-circle" style="width: 45px; height: 45px; border-radius: 50%; background: #03a9f4; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 16px;">S</div>
+                        <div>
+                            <h5 class="fw-bold mb-0" style="font-size: 15px;">Sarah Jenkins</h5>
+                            <small class="text-muted" style="font-size: 12px;">Visited Calangute, Goa</small>
+                        </div>
+                    </div>
+                    <div class="stars mb-2" style="color: #ffcc00; font-size: 13px;">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                    </div>
+                    <p class="text-muted mb-0" style="font-size: 13px; line-height: 1.6;">"Loved the sea breeze, water sports, and beach shacks. Anjuna beach flea market was such a vibrant cultural hotspot. Will definitely recommend the comfort hotel listings compiled here!"</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card community-card h-100 p-4 border-0 shadow-sm" style="background: white; border-radius: 18px; transition: 0.3s;">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="avatar-circle" style="width: 45px; height: 45px; border-radius: 50%; background: #4caf50; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 16px;">A</div>
+                        <div>
+                            <h5 class="fw-bold mb-0" style="font-size: 15px;">Amit Sharma</h5>
+                            <small class="text-muted" style="font-size: 12px;">Visited Backwaters, Kerala</small>
+                        </div>
+                    </div>
+                    <div class="stars mb-2" style="color: #ffcc00; font-size: 13px;">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-muted mb-0" style="font-size: 13px; line-height: 1.6;">"The houseboats in Alleppey were pure tranquility. Kerala's traditional food, Karimeen Pollichathu, was spectacular. The dynamic hotel recommendation was seamless to book!"</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6 mb-4">
+
+                <h3>Amazing India</h3>
+
+                <p>
+                    Chennai,<br>
+                    Tamil Nadu,<br>
+                    India
+                </p>
+
+            </div>
+
+            <div class="col-lg-6 text-lg-end">
+
+                <h3>Connect With Us</h3>
+
+                <div class="social-icons">
+
+                    <a href="#">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Amazing India | All Rights Reserved
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- =========================
+     SEARCH SCRIPT
+========================= -->
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    let destinations = [];
+
+    try {
+        destinations = JSON.parse('{{ catalog_json|escapejs }}');
+    } catch (error) {
+        console.log("Catalog JSON Error:", error);
+    }
+
+    const searchInput = document.getElementById('search-input');
+    const searchForm = document.getElementById('search-form');
+    const suggestionsDropdown = document.getElementById('suggestions-dropdown');
+
+    searchInput.addEventListener('input', function () {
+
+        const value = this.value.trim().toLowerCase();
+
+        if (!value) {
+            suggestionsDropdown.classList.add('d-none');
+            return;
+        }
+
+        const matches = destinations.filter(item => {
+
+            return (
+                item.name.toLowerCase().includes(value) ||
+                (item.state &&
+                item.state.toLowerCase().includes(value))
+            );
+
+        }).slice(0, 8);
+
+        suggestionsDropdown.innerHTML = "";
+
+        if (matches.length > 0) {
+
+            matches.forEach(item => {
+
+                const div = document.createElement('div');
+
+                div.classList.add('suggestion-item');
+
+                let displayType = 'Place';
+                let icon = 'fa-location-dot';
+                if (item.type === 'city') {
+                    displayType = 'City';
+                    icon = 'fa-city';
+                } else if (item.type === 'state') {
+                    displayType = 'State';
+                    icon = 'fa-map';
+                } else if (item.type === 'ut') {
+                    displayType = 'Union Territory';
+                    icon = 'fa-map';
+                } else if (item.type === 'attraction') {
+                    displayType = 'Attraction';
+                    icon = 'fa-monument';
+                } else if (item.type === 'craft') {
+                    displayType = 'Traditional Craft';
+                    icon = 'fa-scissors';
+                } else if (item.type === 'festival') {
+                    displayType = 'Live Festival';
+                    icon = 'fa-calendar-days';
+                }
+
+                div.innerHTML = `
+                    <i class="fa-solid ${icon}"></i>
+                    <span>
+                        <strong>${item.name}</strong>
+                        ${item.state ? ', ' + item.state : ''}
+                    </span>
+                    <span class="suggestion-type">
+                        ${displayType}
+                    </span>
+                `;
+
+                div.addEventListener('click', function () {
+                    searchInput.value = item.name;
+                    suggestionsDropdown.classList.add('d-none');
+                    
+                    if (item.is_item_detail) {
+                        window.location.href = `/item/${item.key}/`;
+                    } else if (['agra', 'jaipur', 'kerala', 'goa', 'kashmir', 'varanasi'].includes(item.key)) {
+                        window.location.href = `/${item.key}/`;
+                    } else {
+                        window.location.href = `/destination/?q=${item.key}`;
+                    }
+                });
+
+                suggestionsDropdown.appendChild(div);
+
+            });
+
+            suggestionsDropdown.classList.remove('d-none');
+
+        } else {
+
+            suggestionsDropdown.classList.add('d-none');
+
+        }
+
+    });
+
+    document.addEventListener('click', function (e) {
+
+        if (
+            !searchInput.contains(e.target) &&
+            !suggestionsDropdown.contains(e.target)
+        ) {
+            suggestionsDropdown.classList.add('d-none');
+        }
+
+    });
+
+    searchForm.addEventListener('submit', function (e) {
+
+        if (!searchInput.value.trim()) {
+
+            e.preventDefault();
+
+            alert('Please enter a destination');
+
+        }
+
+    });
+
+    // Traditional Craft Slider
+    const craftTrack = document.getElementById('craft-slider-track');
+    const prevBtn = document.getElementById('craft-prev-btn');
+    const nextBtn = document.getElementById('craft-next-btn');
+
+    if (craftTrack && prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', function() {
+            craftTrack.scrollLeft -= 304; // 280px card width + 24px gap
+        });
+        nextBtn.addEventListener('click', function() {
+            craftTrack.scrollLeft += 304;
+        });
+    }
+
+});
+
+</script>
+
+
+<!-- GRACEFUL IMAGE FALLBACK SCRIPT -->
+<style>
+.image-not-available-placeholder {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2c2c35 0%, #1a1a20 100%) !important;
+    color: #ffcc00 !important;
+    border: 1px solid rgba(255, 204, 0, 0.15) !important;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif !important;
+}
+.image-not-available-placeholder i {
+    font-size: 32px;
+    color: #ffcc00;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.3));
+}
+.image-not-available-placeholder span {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    function createPlaceholder(img) {
+        if (img.parentNode && !img.parentNode.querySelector('.image-not-available-placeholder')) {
+            const placeholder = document.createElement("div");
+            placeholder.className = "image-not-available-placeholder";
+            
+            // Mirror classes and styles of the original image
+            if (img.className) {
+                placeholder.classList.add(...img.classList);
+            }
+            
+            // Set styles dynamically
+            const style = window.getComputedStyle(img);
+            placeholder.style.width = img.style.width || (img.offsetWidth ? img.offsetWidth + 'px' : '100%');
+            
+            // Get height with fallback
+            let height = img.style.height || style.height;
+            if (!height || height === 'auto' || height === '0px') {
+                height = img.offsetHeight ? img.offsetHeight + 'px' : '240px';
+            }
+            placeholder.style.height = height;
+            placeholder.style.borderRadius = style.borderRadius || '16px';
+            placeholder.style.margin = style.margin;
+            placeholder.style.display = 'flex';
+            
+            placeholder.innerHTML = `
+                <i class="fa-solid fa-image-slash"></i>
+                <span>Image Not Available</span>
+            `;
+            
+            img.style.display = "none";
+            img.parentNode.insertBefore(placeholder, img);
+        }
+    }
+
+    // Process all images
+    document.querySelectorAll("img").forEach(function(img) {
+        const src = img.getAttribute("src");
+        if (!src || src === "Image Not Available" || src.includes("Image%20Not%20Available")) {
+            createPlaceholder(img);
+        } else {
+            img.addEventListener("error", function() {
+                createPlaceholder(img);
+            });
+            if (img.complete && img.naturalWidth === 0) {
+                createPlaceholder(img);
+            }
+        }
+    });
+});
+</script>
+
+</body>
+</html>

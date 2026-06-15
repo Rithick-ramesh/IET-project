@@ -1,0 +1,844 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Trip Planner - Amazing India</title>
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    
+    <style>
+        body {
+            padding-top: 85px !important;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.8) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 70px;
+        }
+
+        .logo {
+            color: #ffcc00 !important;
+            font-size: 28px;
+            font-weight: 800;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffcc00 !important;
+        }
+
+        .planner-hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('{% static 'images/bg.png' %}') no-repeat center center/cover;
+            padding: 100px 0 80px;
+            color: white;
+            text-align: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .planner-container {
+            max-width: 900px;
+            margin: -60px auto 60px;
+            padding: 20px;
+        }
+
+        .planner-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+        }
+
+        .form-control, .form-select {
+            border-radius: 12px;
+            padding: 14px 18px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: #fafafa;
+            transition: all 0.3s ease;
+            font-size: 15px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background: #fff;
+            border-color: #ff9800;
+            box-shadow: 0 0 12px rgba(255, 152, 0, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .generate-btn {
+            background: linear-gradient(135deg, #ff9800, #ff5722);
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            font-size: 17px;
+            font-weight: 700;
+            border-radius: 12px;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(255,87,34,0.3);
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255,87,34,0.45);
+            color: white;
+        }
+
+        /* Loading Spinner Animation */
+        .loading-container {
+            display: none;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .spinner-ring {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 152, 0, 0.2);
+            border-radius: 50%;
+            border-top-color: #ff9800;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Generated Itinerary Styling */
+        #itinerary-result {
+            display: none;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .day-card {
+            background: white;
+            border-radius: 20px;
+            border-left: 6px solid #ff9800;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            margin-bottom: 25px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 20px;
+            border-left: 2px dashed rgba(255, 152, 0, 0.3);
+        }
+
+        .timeline-item:last-child {
+            border-left: none;
+            margin-bottom: 0;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: -14px;
+            top: 0;
+            background: #ffe0b2;
+            color: #ff9800;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .budget-bar {
+            height: 12px;
+            border-radius: 6px;
+            background: #e9ecef;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .budget-progress {
+            height: 100%;
+            border-radius: 6px;
+        }
+
+        /* Footer styling */
+        footer {
+            background: #111;
+            color: white;
+            padding: 50px 0 30px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        @media (max-width: 991px) {
+            .navbar {
+                padding: 15px 25px;
+            }
+        }
+
+        /* Print Media Style */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background: white;
+            }
+            .planner-container {
+                margin-top: 20px;
+            }
+            .planner-card {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+            }
+            #itinerary-result {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <!-- =========================
+     NAVBAR
+========================= -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top"
+     style="background: rgba(0, 0, 0, 0.85) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding: 15px 0; z-index: 2000; width: 100%;">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold text-warning fs-2"
+           href="{% url 'home' %}"
+           style="letter-spacing: 1px; color: #ffcc00 !important; font-size: 28px !important; text-decoration: none;">
+            Amazing India
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end"
+             id="navbarNav">
+
+            <ul class="navbar-nav align-items-center gap-3">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'destination' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Destination
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'ai_planner' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        AI Planner
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Contact
+                    </a>
+                </li>
+
+                {% if user.is_authenticated %}
+
+                <li class="nav-item">
+                    <span class="text-white small" style="color: white !important; font-weight: 500;">
+                        Hi, {{ user.username }}
+                    </span>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}"
+                       class="btn btn-warning rounded-pill px-3"
+                       style="color: black !important; background-color: #ffcc00 !important; border: none; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Logout
+                    </a>
+                </li>
+
+                {% else %}
+
+                <li class="nav-item">
+                    <a href="{% url 'login' %}"
+                       class="btn btn-warning rounded-pill px-3"
+                       style="color: black !important; background-color: #ffcc00 !important; border: none; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Login
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'signup' %}"
+                       class="btn btn-outline-light rounded-pill px-3"
+                       style="color: white !important; border: 1px solid white !important; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Sign Up
+                    </a>
+                </li>
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+    <!-- HERO SECTION -->
+    <header class="planner-hero no-print">
+        <div class="container">
+            <h1 class="fw-bold display-4">AI Travel Itinerary Generator</h1>
+            <p class="fs-5 text-secondary">State-of-the-art personalization for your next Indian adventure</p>
+        </div>
+    </header>
+
+    <!-- MAIN PLANNER CONTAINER -->
+    <main class="planner-container">
+        
+        <!-- PLANNER FORM CARD -->
+        <div class="planner-card mb-5 no-print">
+            <form id="ai-planner-form">
+                <div class="row g-4">
+                    <!-- Starting City -->
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold text-dark small mb-2">Starting City</label>
+                        <input type="text" id="start-city" class="form-control" placeholder="e.g. Mumbai, New Delhi" required>
+                    </div>
+
+                    <!-- Destination Selection -->
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold text-dark small mb-2">Select Destination</label>
+                        <select id="destination-select" class="form-select" required>
+                            <option value="">Choose your destination...</option>
+                            {% for place in destinations_list %}
+                                <option value="{{ place.key }}">{{ place.name }} ({{ place.type|upper }})</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- Budget Range -->
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold text-dark small mb-2">Budget (₹)</label>
+                        <input type="number" id="budget-input" class="form-control" placeholder="e.g. 15000" min="2000" required>
+                    </div>
+
+                    <!-- Travel Style -->
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold text-dark small mb-2">Travel Style</label>
+                        <select id="style-select" class="form-select">
+                            <option value="adventure">Adventure & Outdoors</option>
+                            <option value="luxury">Luxury & Leisure</option>
+                            <option value="family">Family Friendly</option>
+                            <option value="solo">Solo Backpacking</option>
+                            <option value="cultural">Heritage & Culture</option>
+                        </select>
+                    </div>
+
+                    <!-- Travel Days -->
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold text-dark small mb-2">Days (Max 7)</label>
+                        <input type="number" id="days-input" class="form-control" value="3" min="1" max="7" required>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="col-12 mt-4">
+                        <button type="submit" class="generate-btn">
+                            <i class="fa-solid fa-wand-magic-sparkles me-2"></i> Generate AI Itinerary
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- LOADING SPINNER -->
+        <div class="loading-container planner-card no-print" id="loader-box">
+            <div class="spinner-ring mb-4"></div>
+            <h4 class="fw-bold text-dark" id="loader-status">AI engine is processing your request...</h4>
+            <p class="text-secondary small">Gathering attraction data, checking routes, and matching hotels.</p>
+        </div>
+
+        <!-- GENERATED ITINERARY RESULT -->
+        <div id="itinerary-result">
+            <!-- Header Summary Card -->
+            <div class="card border-0 shadow-sm p-4 mb-4" style="border-radius: 20px; background: white;">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                    <div>
+                        <span class="badge bg-warning text-dark fw-bold mb-2 py-2 px-3 fs-6" id="style-badge" style="border-radius: 20px;">Style: Solo</span>
+                        <h2 class="fw-bold mb-1 text-dark" id="itinerary-title">Your Custom Itinerary to Agra</h2>
+                        <p class="text-muted mb-0"><i class="fa-solid fa-route me-1 text-warning"></i> Starting from <span id="start-city-val">Delhi</span> • <span id="days-val">3</span> Days trip</p>
+                    </div>
+                    <button onclick="window.print()" class="btn btn-outline-dark fw-bold no-print py-2 px-4" style="border-radius: 12px;">
+                        <i class="fa-solid fa-print me-2"></i> Print / Save PDF
+                    </button>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Left Column: Day-by-Day Cards -->
+                <div class="col-lg-8" id="days-container">
+                    <!-- Cards will be dynamically inserted here via JS -->
+                </div>
+
+                <!-- Right Column: Budget Allocation & Packing -->
+                <div class="col-lg-4">
+                    <!-- Budget Allocation Card -->
+                    <div class="card p-4 border-0 shadow-sm mb-4" style="border-radius: 20px; background: white;">
+                        <h4 class="fw-bold text-dark mb-3" style="font-size: 18px;">Estimated Budget Breakdown</h4>
+                        <div class="mb-4">
+                            <h3 class="fw-bold text-warning mb-0" id="total-budget-val">₹15,000</h3>
+                            <span class="text-muted small">Total estimated cost</span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between small fw-bold">
+                                <span>Accommodation (40%)</span>
+                                <span id="accom-val">₹6,000</span>
+                            </div>
+                            <div class="budget-bar">
+                                <div class="budget-progress bg-warning" style="width: 40%"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between small fw-bold">
+                                <span>Food & Dining (25%)</span>
+                                <span id="food-val">₹3,750</span>
+                            </div>
+                            <div class="budget-bar">
+                                <div class="budget-progress bg-success" style="width: 25%"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between small fw-bold">
+                                <span>Local Sightseeing (20%)</span>
+                                <span id="sight-val">₹3,000</span>
+                            </div>
+                            <div class="budget-bar">
+                                <div class="budget-progress bg-info" style="width: 20%"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-0">
+                            <div class="d-flex justify-content-between small fw-bold">
+                                <span>Local Transit (15%)</span>
+                                <span id="transit-val">₹2,250</span>
+                            </div>
+                            <div class="budget-bar">
+                                <div class="budget-progress bg-danger" style="width: 15%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Packing List Card -->
+                    <div class="card p-4 border-0 shadow-sm" style="border-radius: 20px; background: white;">
+                        <h4 class="fw-bold text-dark mb-3" style="font-size: 18px;">Recommended Packing List</h4>
+                        <ul class="list-unstyled mb-0" id="packing-container" style="font-size: 15px; line-height: 2;">
+                            <!-- items dynamically inserted -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="no-print">
+        <div class="container">
+            <h2>Amazing India</h2>
+            <p>Explore the beauty and culture of India with us</p>
+            <div class="mt-3 text-secondary" style="font-size: 14px;">
+                © 2026 All Rights Reserved | Amazing India
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- PLANNER GENERATION SCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('ai-planner-form');
+            const loaderBox = document.getElementById('loader-box');
+            const loaderStatus = document.getElementById('loader-status');
+            const itineraryResult = document.getElementById('itinerary-result');
+            
+            // Database of real attractions and info by place keys for high-fidelity itineraries
+            const placeDataSnippet = {
+                'agra': {
+                    'name': 'Agra',
+                    'attractions': ['Taj Mahal', 'Agra Fort', 'Fatehpur Sikri', 'Mehtab Bagh', 'Itimad-ud-Daulah'],
+                    'food': 'Petha (sweet), Bedai Kachori, Mughlai Biryani',
+                    'advice': 'Online booking is required for Taj Mahal tickets. Arrive at sunrise to beat the crowd and heat.'
+                },
+                'jaipur': {
+                    'name': 'Jaipur',
+                    'attractions': ['Amber Palace', 'Hawa Mahal', 'City Palace', 'Jantar Mantar', 'Chokhi Dhani'],
+                    'food': 'Dal Baati Churma, Pyaaz Kachori, Laal Maas',
+                    'advice': 'Buy a composite ticket at Amber Palace to save on entry fees for multiple heritage sites.'
+                },
+                'varanasi': {
+                    'name': 'Varanasi',
+                    'attractions': ['Dashashwamedh Ghat Aarti', 'Kashi Vishwanath Temple', 'Sarnath Buddhist Site', 'Assi Ghat Sunrise', 'Banaras Hindu University'],
+                    'food': 'Kachori Sabzi, Tamatar Chaat, Banarasi Paan',
+                    'advice': 'Book a morning boat ride in advance. Dress modestly while visiting the temples and ghats.'
+                },
+                'mumbai': {
+                    'name': 'Mumbai',
+                    'attractions': ['Gateway of India', 'Marine Drive', 'Elephanta Caves', 'Chhatrapati Shivaji Terminus', 'Siddhivinayak Temple'],
+                    'food': 'Vada Pav, Pav Bhaji, Bhel Puri, Bombay Sandwich',
+                    'advice': 'Use the local trains outside peak hours (11 AM to 4 PM) for quick transit across the city.'
+                },
+                'delhi': {
+                    'name': 'Delhi',
+                    'attractions': ['Red Fort', 'Qutub Minar', 'India Gate', 'Lotus Temple', 'Humayun\'s Tomb'],
+                    'food': 'Chole Bhature, Butter Chicken, Paranthas at Chandni Chowk',
+                    'advice': 'The Delhi Metro is the safest and fastest way to travel around NCR. Get a tourist smart card.'
+                },
+                'bengaluru': {
+                    'name': 'Bengaluru',
+                    'attractions': ['Bangalore Palace', 'Lalbagh Botanical Garden', 'Tipu Sultan\'s Summer Palace', 'Nandi Hills', 'Visvesvaraya Museum'],
+                    'food': 'Masala Dosa, Filter Coffee, Idli Sambhar',
+                    'advice': 'Carry a light jacket as the weather can change quickly. Bengaluru traffic can be heavy, plan accordingly.'
+                },
+                'goa': {
+                    'name': 'Goa',
+                    'attractions': ['Baga Beach', 'Basilica of Bom Jesus', 'Dudhsagar Waterfalls', 'Fort Aguada', 'Anjuna Flea Market'],
+                    'food': 'Goan Fish Curry, Bebinca (dessert), Pork Vindaloo',
+                    'advice': 'Renting a scooter is the most economical and flexible way to explore both North and South Goa.'
+                },
+                'kerala': {
+                    'name': 'Kerala',
+                    'attractions': ['Munnar Tea Gardens', 'Alleppey Houseboat Backwaters', 'Fort Kochi Historic Area', 'Athirappilly Waterfalls', 'Eravikulam National Park'],
+                    'food': 'Kerala Sadya on banana leaf, Karimeen Pollichathu, Appam with Stew',
+                    'advice': 'Pre-book houseboats in Alleppey from verified vendors. Carry insect repellent for backwater cruises.'
+                },
+                'kashmir': {
+                    'name': 'Kashmir',
+                    'attractions': ['Dal Lake Shikara Cruise', 'Gulmarg Gondola Ride', 'Pahalgam Betaab Valley', 'Shalimar Bagh Mughal Gardens', 'Sonamarg Glacier'],
+                    'food': 'Rogan Josh, Kashmiri Kahwa Tea, Gushtaba, Wazwan',
+                    'advice': 'Ensure you check weather and road conditions before heading to high altitude areas like Sonamarg.'
+                }
+            };
+
+            const fallbackAttractions = {
+                'beaches': ['Pristine Sandy Beach Walk', 'Historic Lighthouse Overlook', 'Sunset Point Cruise', 'Local Seafood Market'],
+                'mountains': ['Mist-covered Valley Viewpoint', 'Forest Nature Trail Trek', 'Local Monastery Visit', 'Sunrise Mountain Peak'],
+                'temples': ['Historic Spiritual Temple', 'Local Cultural Heritage Center', 'Ancient Stone Carvings Walk', 'Evening Devotional Aarti'],
+                'palaces': ['Royal Palace Fortress Museum', 'Intricate Stone Architecture Gates', 'King\'s Garden Fountains', 'Light and Sound Heritage Show'],
+                'cities': ['Centrally Located Public Gardens', 'City Center Shopping Bazaar', 'Historic Art and Relic Museum', 'Rooftop City Skyline View'],
+                'nature': ['Scenic Lake Boating Ride', 'National Wildlife Park Safari', 'Lush Forest Waterfall Hike', 'Traditional Tea Plantation tour']
+            };
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Hide past results, show loader
+                itineraryResult.style.display = 'none';
+                loaderBox.style.display = 'block';
+                
+                // Cycle loading messages to simulate AI processing
+                const statusMessages = [
+                    "AI Travel Engine is analyzing destination parameters...",
+                    "Finding best hotels and top attraction spots...",
+                    "Optimizing routes and budget allocations...",
+                    "Generating packing lists and safety guides..."
+                ];
+                
+                let step = 0;
+                const statusInterval = setInterval(function() {
+                    if (step < statusMessages.length) {
+                        loaderStatus.textContent = statusMessages[step];
+                        step++;
+                    }
+                }, 600);
+
+                setTimeout(function() {
+                    clearInterval(statusInterval);
+                    loaderBox.style.display = 'none';
+                    buildItinerary();
+                    itineraryResult.style.display = 'block';
+                }, 2400);
+            });
+
+            function buildItinerary() {
+                const startCity = document.getElementById('start-city').value;
+                const destKey = document.getElementById('destination-select').value;
+                const destName = document.getElementById('destination-select').options[document.getElementById('destination-select').selectedIndex].text.split('(')[0].trim();
+                const budgetVal = parseInt(document.getElementById('budget-input').value);
+                const styleVal = document.getElementById('style-select').value;
+                const daysVal = parseInt(document.getElementById('days-input').value);
+
+                // Set Header Summary details
+                document.getElementById('start-city-val').textContent = startCity;
+                document.getElementById('days-val').textContent = daysVal;
+                document.getElementById('itinerary-title').textContent = `Your Custom Itinerary to ${destName}`;
+                
+                const styleBadge = document.getElementById('style-badge');
+                styleBadge.textContent = `Style: ${styleVal.charAt(0).toUpperCase() + styleVal.slice(1)}`;
+                styleBadge.className = `badge text-dark fw-bold mb-2 py-2 px-3 fs-6 ${getBadgeColorClass(styleVal)}`;
+
+                // Set budget breakdowns
+                document.getElementById('total-budget-val').textContent = `₹${budgetVal.toLocaleString('en-IN')}`;
+                document.getElementById('accom-val').textContent = `₹${Math.round(budgetVal * 0.4).toLocaleString('en-IN')}`;
+                document.getElementById('food-val').textContent = `₹${Math.round(budgetVal * 0.25).toLocaleString('en-IN')}`;
+                document.getElementById('sight-val').textContent = `₹${Math.round(budgetVal * 0.2).toLocaleString('en-IN')}`;
+                document.getElementById('transit-val').textContent = `₹${Math.round(budgetVal * 0.15).toLocaleString('en-IN')}`;
+
+                // Fetch attractions details (specific or dynamic fallback)
+                let placeInfo = placeDataSnippet[destKey];
+                if (!placeInfo) {
+                    // Generate dynamic data fallback
+                    const themes = ['beaches', 'mountains', 'temples', 'palaces', 'cities', 'nature'];
+                    const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+                    placeInfo = {
+                        'name': destName,
+                        'attractions': fallbackAttractions[randomTheme],
+                        'food': 'Regional Specialty Dishes',
+                        'advice': `Check local opening hours in advance. Carry local currency for street market crafts.`
+                    };
+                }
+
+                // Build Day-by-Day Cards HTML
+                const daysContainer = document.getElementById('days-container');
+                daysContainer.innerHTML = '';
+
+                for (let d = 1; d <= daysVal; d++) {
+                    const dayCard = document.createElement('div');
+                    dayCard.className = 'day-card';
+                    
+                    // Choose attractions sequentially
+                    const attr1 = placeInfo.attractions[(d * 2 - 2) % placeInfo.attractions.length];
+                    const attr2 = placeInfo.attractions[(d * 2 - 1) % placeInfo.attractions.length];
+                    
+                    let activityStyleMorning = "Explore historical sites and heritage monuments.";
+                    let activityStyleAfternoon = `Enjoy a local culinary tour. Try traditional foods like ${placeInfo.food}.`;
+                    let activityStyleEvening = "Take a relaxing walk or shopping tour for local handicrafts.";
+
+                    // Style custom overrides
+                    if (styleVal === 'adventure') {
+                        activityStyleMorning = "Go for an early morning outdoor trek, cycling tour, or nature trail.";
+                        activityStyleEvening = "Campfire session or local adventure gear shopping.";
+                    } else if (styleVal === 'luxury') {
+                        activityStyleMorning = "Enjoy a premium breakfast followed by private heritage tours.";
+                        activityStyleAfternoon = "Fine dining lunch experience followed by a relaxing spa session.";
+                    } else if (styleVal === 'family') {
+                        activityStyleMorning = "Visit children-friendly amusement parks, museums, or botanical gardens.";
+                        activityStyleEvening = "Watch an evening light-and-sound cultural show.";
+                    }
+
+                    dayCard.innerHTML = `
+                        <h4 class="fw-bold mb-4 text-warning" style="font-size: 20px;">Day ${d} - Exploring ${placeInfo.name}</h4>
+                        
+                        <div class="timeline-item">
+                            <span class="timeline-icon">M</span>
+                            <h5 class="fw-bold text-dark mb-1" style="font-size: 16px;">Morning (09:00 AM - 12:00 PM)</h5>
+                            <p class="text-secondary small mb-1"><strong>Highlight Spot:</strong> ${attr1}</p>
+                            <p class="text-secondary small mb-0">${activityStyleMorning}</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="timeline-icon">A</span>
+                            <h5 class="fw-bold text-dark mb-1" style="font-size: 16px;">Afternoon (01:00 PM - 04:30 PM)</h5>
+                            <p class="text-secondary small mb-1"><strong>Highlight Spot:</strong> Local Food Hub</p>
+                            <p class="text-secondary small mb-0">${activityStyleAfternoon}</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="timeline-icon">E</span>
+                            <h5 class="fw-bold text-dark mb-1" style="font-size: 16px;">Evening (05:30 PM - 08:30 PM)</h5>
+                            <p class="text-secondary small mb-1"><strong>Highlight Spot:</strong> ${attr2}</p>
+                            <p class="text-secondary small mb-0">${activityStyleEvening}</p>
+                        </div>
+
+                        <div class="border-top mt-4 pt-3 text-secondary small d-flex align-items-center gap-2">
+                            <i class="fa-solid fa-lightbulb text-warning"></i>
+                            <span><strong>Expert Tip:</strong> ${placeInfo.advice}</span>
+                        </div>
+                    `;
+                    daysContainer.appendChild(dayCard);
+                }
+
+                // Build Packing List
+                const packingContainer = document.getElementById('packing-container');
+                packingContainer.innerHTML = '';
+                
+                const packingItems = [
+                    'Valid government photo identification & tickets',
+                    'Comfortable walking shoes & extra pairs of socks',
+                    'Sunscreen (SPF 30+), sunglasses & travel cap',
+                    'Reusable water bottle to stay hydrated',
+                    'Portable power bank and camera gear'
+                ];
+
+                if (styleVal === 'adventure') {
+                    packingItems.push('First-aid kit & mosquito repellent spray');
+                    packingItems.push('Quick-dry clothes & trekking poles');
+                } else if (styleVal === 'luxury') {
+                    packingItems.push('Semi-formal outfits for fine dining');
+                } else if (styleVal === 'family') {
+                    packingItems.push('First-aid medications & child snacks');
+                }
+
+                packingItems.forEach(item => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<i class="fa-regular fa-square-check text-warning me-2"></i> ${item}`;
+                    packingContainer.appendChild(li);
+                });
+            }
+
+            function getBadgeColorClass(style) {
+                switch(style) {
+                    case 'adventure': return 'bg-success text-white';
+                    case 'luxury': return 'bg-danger text-white';
+                    case 'family': return 'bg-primary text-white';
+                    case 'solo': return 'bg-warning text-dark';
+                    case 'cultural': return 'bg-info text-dark';
+                    default: return 'bg-secondary text-white';
+                }
+            }
+        });
+    </script>
+
+<!-- GRACEFUL IMAGE FALLBACK SCRIPT -->
+<style>
+.image-not-available-placeholder {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2c2c35 0%, #1a1a20 100%) !important;
+    color: #ffcc00 !important;
+    border: 1px solid rgba(255, 204, 0, 0.15) !important;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif !important;
+}
+.image-not-available-placeholder i {
+    font-size: 32px;
+    color: #ffcc00;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.3));
+}
+.image-not-available-placeholder span {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    function createPlaceholder(img) {
+        if (img.parentNode && !img.parentNode.querySelector('.image-not-available-placeholder')) {
+            const placeholder = document.createElement("div");
+            placeholder.className = "image-not-available-placeholder";
+            
+            // Mirror classes and styles of the original image
+            if (img.className) {
+                placeholder.classList.add(...img.classList);
+            }
+            
+            // Set styles dynamically
+            const style = window.getComputedStyle(img);
+            placeholder.style.width = img.style.width || (img.offsetWidth ? img.offsetWidth + 'px' : '100%');
+            
+            // Get height with fallback
+            let height = img.style.height || style.height;
+            if (!height || height === 'auto' || height === '0px') {
+                height = img.offsetHeight ? img.offsetHeight + 'px' : '240px';
+            }
+            placeholder.style.height = height;
+            placeholder.style.borderRadius = style.borderRadius || '16px';
+            placeholder.style.margin = style.margin;
+            placeholder.style.display = 'flex';
+            
+            placeholder.innerHTML = `
+                <i class="fa-solid fa-image-slash"></i>
+                <span>Image Not Available</span>
+            `;
+            
+            img.style.display = "none";
+            img.parentNode.insertBefore(placeholder, img);
+        }
+    }
+
+    // Process all images
+    document.querySelectorAll("img").forEach(function(img) {
+        const src = img.getAttribute("src");
+        if (!src || src === "Image Not Available" || src.includes("Image%20Not%20Available")) {
+            createPlaceholder(img);
+        } else {
+            img.addEventListener("error", function() {
+                createPlaceholder(img);
+            });
+            if (img.complete && img.naturalWidth === 0) {
+                createPlaceholder(img);
+            }
+        }
+    });
+});
+</script>
+
+</body>
+</html>

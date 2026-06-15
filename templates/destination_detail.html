@@ -1,0 +1,909 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ place.name }} - Amazing India</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+        body {
+            padding-top: 85px !important;
+        }
+
+    /* Premium visual overrides and enhancements */
+    body {
+      background: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .navbar {
+      background: rgba(0, 0, 0, 0.75) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 15px 70px;
+    }
+
+    .logo {
+      color: #ffcc00 !important;
+      font-size: 28px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.85) !important;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffcc00 !important;
+    }
+
+    /* Hero Section Override for Dynamic Image */
+    .hero-dynamic {
+      height: 70vh;
+      min-height: 450px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+      background-attachment: scroll;
+      color: white;
+      margin-top: 0;
+    }
+
+    .hero-dynamic .overlay {
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
+    }
+
+    .hero-content h1 {
+      font-size: 72px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      margin-bottom: 15px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero-content p {
+      font-size: 22px;
+      max-width: 800px;
+      margin: auto;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+      animation: fadeInUp 1.2s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* About Section styling */
+    .about {
+      padding: 90px 80px;
+      background: white;
+    }
+
+    .about-image img {
+      width: 100%;
+      max-width: 600px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    }
+
+    .section-tag {
+      font-size: 14px;
+      background: #ffcc00;
+      color: #000;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      display: inline-block;
+    }
+
+    .about-content h2 {
+      font-size: 44px;
+      font-weight: 700;
+      margin: 20px 0;
+      color: #1a1a1a;
+    }
+
+    .about-content p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .info-card {
+      background: #f8f9fa;
+      border: 1px solid rgba(0,0,0,0.04);
+      border-radius: 16px;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      border-color: rgba(255, 204, 0, 0.3);
+    }
+
+    .info-card i {
+      color: #ff9800;
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .info-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    .info-card p {
+      font-size: 16px;
+      margin: 0;
+      color: #666;
+      font-weight: 500;
+    }
+
+    /* Places to Visit Card styling */
+    .places {
+      padding: 90px 80px;
+      background: #f4f6f9;
+    }
+
+    .section-title h2 {
+      font-size: 42px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .section-title p {
+      font-size: 18px;
+      color: #666;
+    }
+
+    .place-card {
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      transition: all 0.4s ease;
+    }
+
+    .place-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+
+    .place-card img {
+      height: 250px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+
+    .place-content h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    .place-content p {
+      font-size: 15px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Hotels Section overrides */
+    .hotels-section {
+      padding: 90px 80px;
+      background: white;
+    }
+
+    .category-title {
+      font-size: 30px;
+      font-weight: 700;
+      border-left: 5px solid #ffcc00;
+      padding-left: 15px;
+      margin-bottom: 30px;
+      color: #222;
+    }
+
+    .hotel-card {
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+      transition: all 0.4s ease;
+      background: #fdfdfd;
+    }
+
+    .hotel-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    }
+
+    .hotel-card img {
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+
+    .hotel-content h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .hotel-content p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    .hotel-info span {
+      font-size: 14px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    .hotel-content button {
+      width: 100%;
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      font-weight: 700;
+      background: linear-gradient(135deg,#ffcc00,#ff9800);
+      transition: all 0.3s ease;
+    }
+
+    .hotel-content button a {
+      text-decoration: none;
+      color: black;
+      display: block;
+    }
+
+    .hotel-content button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+    }
+
+    footer h2 {
+      font-weight: 700;
+    }
+
+    @media (max-width: 991px) {
+      .navbar {
+        padding: 15px 25px;
+      }
+      .about, .places, .hotels-section {
+        padding: 60px 20px;
+      }
+      .hero-content h1 {
+        font-size: 48px;
+      }
+      .hero-content p {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <!-- =========================
+     NAVBAR
+========================= -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top"
+     style="background: rgba(0, 0, 0, 0.85) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding: 15px 0; z-index: 2000; width: 100%;">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold text-warning fs-2"
+           href="{% url 'home' %}"
+           style="letter-spacing: 1px; color: #ffcc00 !important; font-size: 28px !important; text-decoration: none;">
+            Amazing India
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end"
+             id="navbarNav">
+
+            <ul class="navbar-nav align-items-center gap-3">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'destination' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Destination
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'ai_planner' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        AI Planner
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Contact
+                    </a>
+                </li>
+
+                {% if user.is_authenticated %}
+
+                <li class="nav-item">
+                    <span class="text-white small" style="color: white !important; font-weight: 500;">
+                        Hi, {{ user.username }}
+                    </span>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}"
+                       class="btn btn-warning rounded-pill px-3"
+                       style="color: black !important; background-color: #ffcc00 !important; border: none; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Logout
+                    </a>
+                </li>
+
+                {% else %}
+
+                <li class="nav-item">
+                    <a href="{% url 'login' %}"
+                       class="btn btn-warning rounded-pill px-3"
+                       style="color: black !important; background-color: #ffcc00 !important; border: none; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Login
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'signup' %}"
+                       class="btn btn-outline-light rounded-pill px-3"
+                       style="color: white !important; border: 1px solid white !important; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Sign Up
+                    </a>
+                </li>
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+  <!-- Hero Section -->
+  <section class="hero-dynamic" style="background-image: url('{{ place.image }}');">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Welcome To {{ place.name }}</h1>
+      <p>{{ place.tag }}</p>
+    </div>
+  </section>
+
+  <!-- Live Travel Status & Alerts Section -->
+  <section class="live-alerts-section py-4" style="background: #fff6eb; border-bottom: 1px solid rgba(255, 152, 0, 0.15);">
+    <div class="container">
+      <div class="d-flex align-items-center gap-2 mb-3">
+        <span class="pulse-indicator"></span>
+        <h4 class="fw-bold mb-0 text-dark" style="font-size: 20px; letter-spacing: 0.5px;">Live Travel Status & Alerts</h4>
+      </div>
+      
+      <div class="row g-3">
+        <!-- Weather Card -->
+        <div class="col-md-3">
+          <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+            <div class="d-flex align-items-center gap-3">
+              <div class="alert-icon-box weather-bg"><i class="fa-solid fa-cloud-sun"></i></div>
+              <div>
+                <h5 class="fw-bold mb-1 small text-muted text-uppercase">Local Weather</h5>
+                <p class="mb-0 text-dark small font-weight-bold">{{ alerts.weather }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Crowd Warning Card -->
+        <div class="col-md-3">
+          <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+            <div class="d-flex align-items-center gap-3">
+              <div class="alert-icon-box crowd-bg"><i class="fa-solid fa-users-line"></i></div>
+              <div>
+                <h5 class="fw-bold mb-1 small text-muted text-uppercase">Crowd Status</h5>
+                <p class="mb-0 text-dark small font-weight-bold">{{ alerts.crowd }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Safety Card -->
+        <div class="col-md-3">
+          <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+            <div class="d-flex align-items-center gap-3">
+              <div class="alert-icon-box safety-bg"><i class="fa-solid fa-shield-halved"></i></div>
+              <div>
+                <h5 class="fw-bold mb-1 small text-muted text-uppercase">Safety Updates</h5>
+                <p class="mb-0 text-dark small font-weight-bold">{{ alerts.safety }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Emergency Contacts Card -->
+        <div class="col-md-3">
+          <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+            <div class="d-flex align-items-center gap-3">
+              <div class="alert-icon-box emergency-bg"><i class="fa-solid fa-truck-medical"></i></div>
+              <div>
+                <h5 class="fw-bold mb-1 small text-muted text-uppercase">Emergency Help</h5>
+                <p class="mb-1 text-dark small"><strong>Hospital:</strong> {{ alerts.hospital }}</p>
+                <p class="mb-0 text-dark small"><strong>Police:</strong> {{ alerts.police }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Alerts CSS overrides -->
+  <style>
+    .pulse-indicator {
+      width: 10px;
+      height: 10px;
+      background-color: #ff9800;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);
+      animation: pulse 1.6s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(255, 152, 0, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 152, 0, 0);
+      }
+    }
+
+    .alert-status-card {
+      background: white;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      border-left: 4px solid #ff9800 !important;
+    }
+
+    .alert-status-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 152, 0, 0.1) !important;
+    }
+
+    .alert-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .weather-bg { background: #e3f2fd; color: #1e88e5; }
+    .crowd-bg { background: #fff3e0; color: #fb8c00; }
+    .safety-bg { background: #e8f5e9; color: #43a047; }
+    .emergency-bg { background: #ffebee; color: #e53935; }
+  </style>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container d-flex flex-wrap justify-content-center gap-5 align-items-center">
+      <div class="about-image flex-grow-1 flex-shrink-1" style="max-width: 550px;">
+        <img src="{{ place.about_image }}" alt="{{ place.name }}">
+      </div>
+      <div class="about-content flex-grow-1 flex-shrink-1" style="max-width: 600px;">
+        <span class="section-tag">{{ place.tag }}</span>
+        <h2>About {{ place.name }}</h2>
+        <p>{{ place.description }}</p>
+        <p>{{ place.about_more }}</p>
+
+        <div class="info-grid">
+          {% if place.state %}
+          <div class="info-card">
+            <i class="fa-solid fa-location-dot"></i>
+            <h3>State</h3>
+            <p>{{ place.state }}</p>
+          </div>
+          {% endif %}
+          <div class="info-card">
+            <i class="fa-solid fa-language"></i>
+            <h3>Language</h3>
+            <p>{{ place.language }}</p>
+          </div>
+          <div class="info-card">
+            <i class="fa-solid fa-sun"></i>
+            <h3>Best Time</h3>
+            <p>{{ place.best_time }}</p>
+          </div>
+          <div class="info-card">
+            <i class="fa-solid fa-utensils"></i>
+            <h3>Famous Food</h3>
+            <p>{{ place.food }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Attractions Section -->
+  <section class="places" id="places">
+    <div class="container">
+      <div class="section-title">
+        <h2>Top Tourist Attractions</h2>
+        <p>Best places to visit in {{ place.name }}</p>
+      </div>
+
+      <div class="place-container">
+        {% for attraction in place.attractions %}
+        <div class="place-card">
+          <img src="{{ attraction.image }}" alt="{{ attraction.name }}" class="w-100 object-fit-cover">
+          <div class="place-content">
+            <h3>{{ attraction.name }}</h3>
+            <p>{{ attraction.desc }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {% if place.travel_tips or place.nearby_attractions %}
+  <!-- Travel Tips & Nearby Attractions Section -->
+  <section class="py-5" style="background: #fdfdfd; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
+    <div class="container">
+      <div class="row g-4">
+        {% if place.travel_tips %}
+        <div class="col-md-6">
+          <div class="p-4 bg-white rounded-4 shadow-sm border h-100" style="border-radius: 16px;">
+            <h4 class="fw-bold mb-3 text-dark"><i class="fa-solid fa-circle-info text-warning me-2"></i> Travel Tips</h4>
+            <p class="text-secondary mb-0" style="line-height: 1.8; font-size: 15px;">{{ place.travel_tips }}</p>
+          </div>
+        </div>
+        {% endif %}
+        
+        {% if place.nearby_attractions %}
+        <div class="col-md-6">
+          <div class="p-4 bg-white rounded-4 shadow-sm border h-100" style="border-radius: 16px;">
+            <h4 class="fw-bold mb-3 text-dark"><i class="fa-solid fa-map-location-dot text-warning me-2"></i> Nearby Attractions</h4>
+            <p class="text-secondary mb-0" style="line-height: 1.8; font-size: 15px;">{{ place.nearby_attractions }}</p>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- Hotels Section -->
+  <section class="hotels-section py-5" id="hotels">
+    <div class="container">
+      <div class="section-title text-center mb-5">
+        <h2 class="fw-bold">Recommended Accommodations</h2>
+        <p class="text-muted">Discover luxury, comfort, and affordable stays selected in {{ place.name }}</p>
+      </div>
+
+      <!-- Category Tabs Navigation -->
+      <ul class="nav nav-pills justify-content-center mb-4 gap-2" id="hotelTabs" role="tablist">
+        {% if place.hotels.luxury %}
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active fw-bold px-4 py-2.5 rounded-pill shadow-sm" id="luxury-tab" data-bs-toggle="pill" data-bs-target="#luxury-pane" type="button" role="tab" aria-controls="luxury-pane" aria-selected="true" style="font-size: 14px; border: 1px solid #dee2e6; color: #495057;">
+            <i class="fa-solid fa-crown me-1 text-warning"></i> Luxury Hotels
+          </button>
+        </li>
+        {% endif %}
+        {% if place.hotels.comfort %}
+        <li class="nav-item" role="presentation">
+          <button class="nav-link {% if not place.hotels.luxury %}active{% endif %} fw-bold px-4 py-2.5 rounded-pill shadow-sm" id="comfort-tab" data-bs-toggle="pill" data-bs-target="#comfort-pane" type="button" role="tab" aria-controls="comfort-pane" aria-selected="{% if not place.hotels.luxury %}true{% else %}false{% endif %}" style="font-size: 14px; border: 1px solid #dee2e6; color: #495057;">
+            <i class="fa-solid fa-circle-check me-1 text-primary"></i> Comfort Stays
+          </button>
+        </li>
+        {% endif %}
+        {% if place.hotels.budget %}
+        <li class="nav-item" role="presentation">
+          <button class="nav-link {% if not place.hotels.luxury and not place.hotels.comfort %}active{% endif %} fw-bold px-4 py-2.5 rounded-pill shadow-sm" id="budget-tab" data-bs-toggle="pill" data-bs-target="#budget-pane" type="button" role="tab" aria-controls="budget-pane" aria-selected="{% if not place.hotels.luxury and not place.hotels.comfort %}true{% else %}false{% endif %}" style="font-size: 14px; border: 1px solid #dee2e6; color: #495057;">
+            <i class="fa-solid fa-wallet me-1 text-success"></i> Affordable Options
+          </button>
+        </li>
+        {% endif %}
+      </ul>
+
+      <!-- Category Tabs Content -->
+      <div class="tab-content mt-4" id="hotelTabContent">
+        {% if place.hotels.luxury %}
+        <div class="tab-pane fade show active" id="luxury-pane" role="tabpanel" aria-labelledby="luxury-tab" tabindex="0">
+          <div class="row g-4">
+            {% for hotel in place.hotels.luxury %}
+            <div class="col-md-6 d-flex align-items-stretch">
+              <div class="hotel-card w-100 d-flex flex-column" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.06);">
+                <div style="height: 250px; overflow: hidden;">
+                  <img src="{{ hotel.image }}" alt="{{ hotel.name }}" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+                </div>
+                <div class="hotel-content p-4 flex-grow-1 d-flex flex-column">
+                  <h3 class="fw-bold mb-2" style="font-size: 22px;">{{ hotel.name }}</h3>
+                  <p class="text-secondary small mb-3">{{ hotel.desc }}</p>
+                  
+                  <div class="hotel-info mt-auto mb-3" style="border-top: 1px solid #f1f1f1; padding-top: 15px;">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <span class="small fw-bold"><i class="fa-solid fa-star text-warning me-1"></i> {{ hotel.stars }}</span>
+                      <span class="small text-muted"><i class="fa-solid fa-location-dot text-warning me-1"></i> {{ hotel.location }}</span>
+                    </div>
+                    {% if hotel.price %}
+                    <p class="mb-2 small"><strong>Pricing:</strong> <span class="text-success fw-bold">{{ hotel.price }}</span></p>
+                    {% endif %}
+                    {% if hotel.amenities %}
+                    <div class="d-flex flex-wrap gap-1 mt-2">
+                      {% for amenity in hotel.amenities %}
+                      <span class="badge bg-light text-dark border small" style="font-size: 10px; font-weight: 500; border-radius: 6px;">{{ amenity }}</span>
+                      {% endfor %}
+                    </div>
+                    {% endif %}
+                  </div>
+                  
+                  <button class="mt-auto btn btn-warning fw-bold py-2 w-100" style="border: none; border-radius: 10px; background: linear-gradient(135deg, #ffcc00, #ff9800);">
+                    <a href="{{ hotel.link|default:'#' }}" target="_blank" style="text-decoration: none; color: black; display: block;">Book Now</a>
+                  </button>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        {% if place.hotels.comfort %}
+        <div class="tab-pane fade {% if not place.hotels.luxury %}show active{% endif %}" id="comfort-pane" role="tabpanel" aria-labelledby="comfort-tab" tabindex="0">
+          <div class="row g-4">
+            {% for hotel in place.hotels.comfort %}
+            <div class="col-md-6 d-flex align-items-stretch">
+              <div class="hotel-card w-100 d-flex flex-column" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.06);">
+                <div style="height: 250px; overflow: hidden;">
+                  <img src="{{ hotel.image }}" alt="{{ hotel.name }}" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+                </div>
+                <div class="hotel-content p-4 flex-grow-1 d-flex flex-column">
+                  <h3 class="fw-bold mb-2" style="font-size: 22px;">{{ hotel.name }}</h3>
+                  <p class="text-secondary small mb-3">{{ hotel.desc }}</p>
+                  
+                  <div class="hotel-info mt-auto mb-3" style="border-top: 1px solid #f1f1f1; padding-top: 15px;">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <span class="small fw-bold"><i class="fa-solid fa-star text-primary me-1"></i> {{ hotel.stars }}</span>
+                      <span class="small text-muted"><i class="fa-solid fa-location-dot text-warning me-1"></i> {{ hotel.location }}</span>
+                    </div>
+                    {% if hotel.price %}
+                    <p class="mb-2 small"><strong>Pricing:</strong> <span class="text-success fw-bold">{{ hotel.price }}</span></p>
+                    {% endif %}
+                    {% if hotel.amenities %}
+                    <div class="d-flex flex-wrap gap-1 mt-2">
+                      {% for amenity in hotel.amenities %}
+                      <span class="badge bg-light text-dark border small" style="font-size: 10px; font-weight: 500; border-radius: 6px;">{{ amenity }}</span>
+                      {% endfor %}
+                    </div>
+                    {% endif %}
+                  </div>
+                  
+                  <button class="mt-auto btn btn-warning fw-bold py-2 w-100" style="border: none; border-radius: 10px; background: linear-gradient(135deg, #ffcc00, #ff9800);">
+                    <a href="{{ hotel.link|default:'#' }}" target="_blank" style="text-decoration: none; color: black; display: block;">Book Now</a>
+                  </button>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        {% if place.hotels.budget %}
+        <div class="tab-pane fade {% if not place.hotels.luxury and not place.hotels.comfort %}show active{% endif %}" id="budget-pane" role="tabpanel" aria-labelledby="budget-tab" tabindex="0">
+          <div class="row g-4">
+            {% for hotel in place.hotels.budget %}
+            <div class="col-md-6 d-flex align-items-stretch">
+              <div class="hotel-card w-100 d-flex flex-column" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.06);">
+                <div style="height: 250px; overflow: hidden;">
+                  <img src="{{ hotel.image }}" alt="{{ hotel.name }}" class="w-100 h-100 object-fit-cover" style="transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+                </div>
+                <div class="hotel-content p-4 flex-grow-1 d-flex flex-column">
+                  <h3 class="fw-bold mb-2" style="font-size: 22px;">{{ hotel.name }}</h3>
+                  <p class="text-secondary small mb-3">{{ hotel.desc }}</p>
+                  
+                  <div class="hotel-info mt-auto mb-3" style="border-top: 1px solid #f1f1f1; padding-top: 15px;">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <span class="small fw-bold"><i class="fa-solid fa-wallet text-success me-1"></i> {{ hotel.stars }}</span>
+                      <span class="small text-muted"><i class="fa-solid fa-location-dot text-warning me-1"></i> {{ hotel.location }}</span>
+                    </div>
+                    {% if hotel.price %}
+                    <p class="mb-2 small"><strong>Pricing:</strong> <span class="text-success fw-bold">{{ hotel.price }}</span></p>
+                    {% endif %}
+                    {% if hotel.amenities %}
+                    <div class="d-flex flex-wrap gap-1 mt-2">
+                      {% for amenity in hotel.amenities %}
+                      <span class="badge bg-light text-dark border small" style="font-size: 10px; font-weight: 500; border-radius: 6px;">{{ amenity }}</span>
+                      {% endfor %}
+                    </div>
+                    {% endif %}
+                  </div>
+                  
+                  <button class="mt-auto btn btn-warning fw-bold py-2 w-100" style="border: none; border-radius: 10px; background: linear-gradient(135deg, #ffcc00, #ff9800);">
+                    <a href="{{ hotel.link|default:'#' }}" target="_blank" style="text-decoration: none; color: black; display: block;">Book Now</a>
+                  </button>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  {% include 'reviews_section.html' %}
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <h2>Amazing India</h2>
+      <p>Explore the beauty and culture of India with us</p>
+      <div class="mt-3 text-secondary" style="font-size: 14px;">
+        © 2026 All Rights Reserved | Amazing India
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- GRACEFUL IMAGE FALLBACK SCRIPT -->
+<style>
+.image-not-available-placeholder {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2c2c35 0%, #1a1a20 100%) !important;
+    color: #ffcc00 !important;
+    border: 1px solid rgba(255, 204, 0, 0.15) !important;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif !important;
+}
+.image-not-available-placeholder i {
+    font-size: 32px;
+    color: #ffcc00;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.3));
+}
+.image-not-available-placeholder span {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    function createPlaceholder(img) {
+        if (img.parentNode && !img.parentNode.querySelector('.image-not-available-placeholder')) {
+            const placeholder = document.createElement("div");
+            placeholder.className = "image-not-available-placeholder";
+            
+            // Mirror classes and styles of the original image
+            if (img.className) {
+                placeholder.classList.add(...img.classList);
+            }
+            
+            // Set styles dynamically
+            const style = window.getComputedStyle(img);
+            placeholder.style.width = img.style.width || (img.offsetWidth ? img.offsetWidth + 'px' : '100%');
+            
+            // Get height with fallback
+            let height = img.style.height || style.height;
+            if (!height || height === 'auto' || height === '0px') {
+                height = img.offsetHeight ? img.offsetHeight + 'px' : '240px';
+            }
+            placeholder.style.height = height;
+            placeholder.style.borderRadius = style.borderRadius || '16px';
+            placeholder.style.margin = style.margin;
+            placeholder.style.display = 'flex';
+            
+            placeholder.innerHTML = `
+                <i class="fa-solid fa-image-slash"></i>
+                <span>Image Not Available</span>
+            `;
+            
+            img.style.display = "none";
+            img.parentNode.insertBefore(placeholder, img);
+        }
+    }
+
+    // Process all images
+    document.querySelectorAll("img").forEach(function(img) {
+        const src = img.getAttribute("src");
+        if (!src || src === "Image Not Available" || src.includes("Image%20Not%20Available")) {
+            createPlaceholder(img);
+        } else {
+            img.addEventListener("error", function() {
+                createPlaceholder(img);
+            });
+            if (img.complete && img.naturalWidth === 0) {
+                createPlaceholder(img);
+            }
+        }
+    });
+});
+</script>
+
+</body>
+</html>

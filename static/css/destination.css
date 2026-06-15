@@ -1,0 +1,204 @@
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial, sans-serif;
+    background:#f8f9fa;
+}
+
+/* HERO */
+
+.destination-hero{
+    height:90vh;
+    background-image:url('/static/images/destinationimage10.jpg');
+    background-size:cover;
+    background-position:center;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.overlay-dark{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    color:white;
+}
+
+.hero-content h1{
+    font-size:70px;
+    font-weight:bold;
+}
+
+.hero-content p{
+    font-size:22px;
+    margin-top:20px;
+}
+
+/* SEARCH */
+
+.search-container{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:30px;
+}
+
+.search-container input,
+.search-container select.search-select{
+    width:350px;
+    padding:14px;
+    border-radius:30px;
+    border:none;
+    outline:none;
+}
+
+.search-container select.search-select{
+    background:white;
+    cursor:pointer;
+}
+
+.search-container select.search-select:disabled{
+    background:#e9ecef;
+    color:#6c757d;
+    cursor:not-allowed;
+}
+
+.search-container .btn{
+    padding:12px 30px;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+/* SECTION */
+
+.section-heading{
+    font-size:45px;
+    font-weight:bold;
+}
+
+.section-subtitle{
+    color:gray;
+    font-size:18px;
+}
+
+/* DESTINATION CARDS */
+
+.destination-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+.destination-card img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+    transition:0.5s;
+}
+
+.destination-card:hover img{
+    transform:scale(1.1);
+}
+
+.card-overlay{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    background:linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color:white;
+    padding:30px 20px;
+}
+
+.card-overlay h3{
+    font-size:30px;
+    font-weight:bold;
+}
+
+/* WHY VISIT */
+
+.why-visit{
+    background:white;
+}
+
+.feature-box{
+    background:#fff;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    transition:0.5s;
+    height:100%;
+}
+
+.feature-box:hover{
+    transform:translateY(-10px);
+}
+
+.feature-box i{
+    font-size:50px;
+    color:orange;
+    margin-bottom:20px;
+}
+
+/* GALLERY */
+
+.gallery-img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    border-radius:20px;
+    transition:0.5s;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+.gallery-img:hover{
+    transform:scale(1.05);
+}
+
+/* FOOTER */
+
+.footer-section{
+    background:#111;
+    color:white;
+    padding:60px 0 20px;
+}
+
+.social-icons a{
+    color:white;
+    font-size:25px;
+    margin-left:15px;
+    transition:0.3s;
+}
+
+.social-icons a:hover{
+    color:orange;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .hero-content h1{
+        font-size:45px;
+    }
+
+    .search-container{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .search-container input,
+    .search-container select.search-select{
+        width:100%;
+    }
+
+}

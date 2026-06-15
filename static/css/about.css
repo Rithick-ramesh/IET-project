@@ -1,0 +1,226 @@
+*{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* Navbar */
+        /* Disabled conflict */
+.navbar-old-disabled{
+            background-color: white;
+            padding: 15px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand-old-disabled{
+            font-size: 32px;
+            font-weight: bold;
+            color:black !important;
+        }
+
+        .nav-link-old-disabled{
+            color: black !important;
+            font-size: 18px;
+            margin-left: 20px;
+            transition: 0.3s;
+        }
+
+        .nav-link-hover-old-disabled{
+            color: #ff6b00 !important;
+        }
+
+        .about-hero{
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+            background-image:url('/static/images/about image2.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .about-hero h1{
+            font-size: 70px;
+            font-weight: bold;
+        }
+
+        .about-hero p{
+            font-size: 22px;
+            margin-top: 10px;
+        }
+
+        /* About Content */
+        .about-section{
+            padding: 80px 20px;
+        }
+
+        .about-title{
+            font-size: 45px;
+            font-weight: bold;
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        .about-text{
+            font-size: 18px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .about-img{
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Features */
+        .feature-box{
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.4s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .feature-box:hover{
+            transform: translateY(-10px);
+        }
+
+        .feature-box i{
+            font-size: 45px;
+            color: #ff6b00;
+            margin-bottom: 15px;
+        }
+
+        .feature-box h4{
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+     /* FOOTER */
+
+.footer-section{
+    background: #050505;
+    color: white;
+    padding: 70px 0 30px;
+}
+
+.footer-logo{
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.footer-text{
+    font-size: 24px;
+    line-height: 2;
+    color: #d6d6d6;
+}
+
+.footer-title{
+    font-size: 45px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.social-icons{
+    display: flex;
+    justify-content: end;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.social-icons a{
+    width: 65px;
+    height: 65px;
+    background: #1c1c1c;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.4s;
+}
+
+.social-icons a i{
+    color: white;
+    font-size: 24px;
+}
+
+.social-icons a:hover{
+    background: #ff6b00;
+    transform: translateY(-6px);
+}
+
+.footer-line{
+    border-color: rgba(255,255,255,0.2);
+    margin: 60px 0 25px;
+}
+
+.copyright-text{
+    font-size: 22px;
+    color: #d6d6d6;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .footer-logo{
+        font-size: 38px;
+        text-align: center;
+    }
+
+    .footer-text{
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .footer-title{
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .social-icons{
+        justify-content: center;
+    }
+
+    .social-icons a{
+        width: 55px;
+        height: 55px;
+    }
+
+    .copyright-text{
+        font-size: 16px;
+    }
+}
+        /* Responsive */
+        @media(max-width:768px){
+
+            .about-hero h1{
+                font-size: 45px;
+            }
+
+            .about-hero p{
+                font-size: 18px;
+            }
+
+            .about-title{
+                font-size: 35px;
+                text-align: center;
+            }
+
+            .about-text{
+                text-align: center;
+            }
+        }

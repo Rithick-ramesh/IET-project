@@ -1,0 +1,750 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Goa - Amazing India</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <style>
+        body {
+            padding-top: 85px !important;
+        }
+
+        /* Hotels Section */
+/* =========================================
+   GOA HOTELS SECTION
+========================================= */
+
+        /* =========================================
+   GOA HOTELS SECTION
+========================================= */
+
+.goa-hotels{
+    padding: 100px 80px;
+    background: #f5f5f5;
+}
+
+/* Section Title */
+
+.goa-hotels .section-title{
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.goa-hotels .section-title h2{
+    font-size: 70px;
+    font-weight: bold;
+    color: #ff6f00;
+    margin-bottom: 15px;
+}
+
+.goa-hotels .section-title p{
+    font-size: 24px;
+    color: #666;
+}
+
+/* Category Title */
+
+.goa-hotels .hotel-category{
+    font-size: 58px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #222;
+}
+
+/* Hotel Container */
+
+.goa-hotels .hotel-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 35px;
+    margin-bottom: 90px;
+}
+
+/* Card */
+
+.goa-hotels .hotel-card{
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: 0.4s;
+}
+
+.goa-hotels .hotel-card:hover{
+    transform: translateY(-10px);
+}
+
+/* Image */
+
+.goa-hotels .hotel-card img{
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+/* Content */
+
+.goa-hotels .hotel-content{
+    padding: 35px;
+}
+
+.goa-hotels .hotel-content h3{
+    font-size: 42px;
+    margin-bottom: 20px;
+    color: #111;
+}
+
+.goa-hotels .hotel-content p{
+    font-size: 22px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Info */
+
+.goa-hotels .hotel-info{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.goa-hotels .hotel-info span{
+    font-size: 20px;
+    color: #333;
+}
+
+.goa-hotels .hotel-info i{
+    color: orange;
+    margin-right: 8px;
+}
+
+/* Button */
+
+.goa-hotels button{
+    padding: 16px 38px;
+    border: none;
+    border-radius: 12px;
+    background: #ffbf00;
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.goa-hotels button:hover{
+    background: #ff9800;
+    transform: scale(1.05);
+}
+.goa-bg{
+    background: url("{% static 'images/goa image1.webp' %}") no-repeat center center/cover !important;
+}
+
+/* Responsive */
+
+@media(max-width:1000px){
+
+    .goa-hotels .hotel-container{
+        grid-template-columns: 1fr;
+    }
+
+    .goa-hotels{
+        padding: 80px 25px;
+    }
+
+    .goa-hotels .section-title h2{
+        font-size: 50px;
+    }
+
+    .goa-hotels .hotel-category{
+        font-size: 42px;
+    }
+
+    .goa-hotels .hotel-content h3{
+        font-size: 32px;
+    }
+
+}
+    </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+<!-- NAVBAR -->
+<!-- =========================
+     NAVBAR
+========================= -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top"
+     style="background: rgba(0, 0, 0, 0.85) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding: 15px 0; z-index: 2000; width: 100%;">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold text-warning fs-2"
+           href="{% url 'home' %}"
+           style="letter-spacing: 1px; color: #ffcc00 !important; font-size: 28px !important; text-decoration: none;">
+            Amazing India
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end"
+             id="navbarNav">
+
+            <ul class="navbar-nav align-items-center gap-3">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'destination' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Destination
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'ai_planner' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        AI Planner
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Contact
+                    </a>
+                </li>
+
+                {% if user.is_authenticated %}
+
+                <li class="nav-item">
+                    <span class="text-white small" style="color: white !important; font-weight: 500;">
+                        Hi, {{ user.username }}
+                    </span>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}"
+                       class="btn btn-warning rounded-pill px-3"
+                       style="color: black !important; background-color: #ffcc00 !important; border: none; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Logout
+                    </a>
+                </li>
+
+                {% else %}
+
+                <li class="nav-item">
+                    <a href="{% url 'login' %}"
+                       class="btn btn-warning rounded-pill px-3"
+                       style="color: black !important; background-color: #ffcc00 !important; border: none; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Login
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'signup' %}"
+                       class="btn btn-outline-light rounded-pill px-3"
+                       style="color: white !important; border: 1px solid white !important; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Sign Up
+                    </a>
+                </li>
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+ 
+  <!-- Hero Section -->
+  <section class="hero goa-bg"> 
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+
+      <h1>Welcome To Goa</h1>
+
+      <p>
+        Discover golden beaches, vibrant nightlife,
+        Portuguese culture, seafood, and tropical vibes
+        in India’s favorite beach destination.
+      </p>
+
+     
+
+    </div>
+
+  </section>
+
+<!-- Live Travel Status & Alerts Section -->
+<section class="live-alerts-section py-4" style="background: #fff6eb; border-bottom: 1px solid rgba(255, 152, 0, 0.15);">
+  <div class="container">
+    <div class="d-flex align-items-center gap-2 mb-3">
+      <span class="pulse-indicator"></span>
+      <h4 class="fw-bold mb-0 text-dark" style="font-size: 20px; letter-spacing: 0.5px;">Live Travel Status & Alerts</h4>
+    </div>
+    
+    <div class="row g-3">
+      <!-- Weather Card -->
+      <div class="col-md-3">
+        <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+          <div class="d-flex align-items-center gap-3">
+            <div class="alert-icon-box weather-bg"><i class="fa-solid fa-cloud-sun"></i></div>
+            <div>
+              <h5 class="fw-bold mb-1 small text-muted text-uppercase" style="font-size: 11px;">Local Weather</h5>
+              <p class="mb-0 text-dark small font-weight-bold" style="font-size: 13px;">{{ alerts.weather }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Crowd Warning Card -->
+      <div class="col-md-3">
+        <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+          <div class="d-flex align-items-center gap-3">
+            <div class="alert-icon-box crowd-bg"><i class="fa-solid fa-users-line"></i></div>
+            <div>
+              <h5 class="fw-bold mb-1 small text-muted text-uppercase" style="font-size: 11px;">Crowd Status</h5>
+              <p class="mb-0 text-dark small font-weight-bold" style="font-size: 13px;">{{ alerts.crowd }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Safety Card -->
+      <div class="col-md-3">
+        <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+          <div class="d-flex align-items-center gap-3">
+            <div class="alert-icon-box safety-bg"><i class="fa-solid fa-shield-halved"></i></div>
+            <div>
+              <h5 class="fw-bold mb-1 small text-muted text-uppercase" style="font-size: 11px;">Safety Updates</h5>
+              <p class="mb-0 text-dark small font-weight-bold" style="font-size: 13px;">{{ alerts.safety }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Emergency Contacts Card -->
+      <div class="col-md-3">
+        <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+          <div class="d-flex align-items-center gap-3">
+            <div class="alert-icon-box emergency-bg"><i class="fa-solid fa-truck-medical"></i></div>
+            <div>
+              <h5 class="fw-bold mb-1 small text-muted text-uppercase" style="font-size: 11px;">Emergency Help</h5>
+              <p class="mb-1 text-dark small" style="font-size: 12px;"><strong>Hospital:</strong> {{ alerts.hospital }}</p>
+              <p class="mb-0 text-dark small" style="font-size: 12px;"><strong>Police:</strong> {{ alerts.police }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Live Alerts CSS overrides -->
+<style>
+  .pulse-indicator {
+    width: 10px;
+    height: 10px;
+    background-color: #ff9800;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);
+    animation: pulse 1.6s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);
+    }
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 6px rgba(255, 152, 0, 0);
+    }
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 152, 0, 0);
+    }
+  }
+
+  .alert-status-card {
+    background: white;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    border-left: 4px solid #ff9800 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+  }
+
+  .alert-status-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 152, 0, 0.1) !important;
+  }
+
+  .alert-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .weather-bg { background: #e3f2fd; color: #1e88e5; }
+  .crowd-bg { background: #fff3e0; color: #fb8c00; }
+  .safety-bg { background: #e8f5e9; color: #43a047; }
+  .emergency-bg { background: #ffebee; color: #e53935; }
+</style>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+
+    <div class="about-image">
+      <img
+        src="{% static 'images/goa image2.jpg' %}"
+        alt="Goa">
+    </div>
+
+    <div class="about-content">
+
+      <span class="section-tag">BEACH PARADISE</span>
+
+      <h2>About Goa</h2>
+
+      <p>
+        Goa is one of India’s most famous tourist destinations,
+        known for its beautiful beaches, nightlife, Portuguese architecture,
+        and relaxing coastal atmosphere.
+      </p>
+
+      <p>
+        From beach parties and water sports to ancient churches
+        and seafood cuisine, Goa offers a perfect mix of adventure,
+        relaxation, and culture.
+      </p>
+
+      <div class="info-grid">
+
+        <div class="info-card">
+          <i class="fa-solid fa-location-dot"></i>
+          <h3>State</h3>
+          <p>Goa</p>
+        </div>
+
+        <div class="info-card">
+          <i class="fa-solid fa-language"></i>
+          <h3>Language</h3>
+          <p>Konkani</p>
+        </div>
+
+        <div class="info-card">
+          <i class="fa-solid fa-sun"></i>
+          <h3>Best Time</h3>
+          <p>November - February</p>
+        </div>
+
+        <div class="info-card">
+          <i class="fa-solid fa-utensils"></i>
+          <h3>Famous Food</h3>
+          <p>Goan Fish Curry</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Tourist Places -->
+  <section class="places" id="places">
+
+    <div class="section-title">
+      <h2>Top Tourist Attractions</h2>
+      <p>Best places to visit in Goa</p>
+    </div>
+
+    <div class="place-container">
+
+      <!-- Card 1 -->
+      <div class="place-card">
+
+        <img
+          src="{% static 'images/anuja beach.jpg' %}"
+          alt="Anjuna Beach">
+
+        <div class="place-content">
+          <h3>Anjuna Beach</h3>
+
+          <p>
+            Famous for its rocky shores, weekly flea markets,
+            iconic beach shacks, and vibrant trance party culture.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Card 2 -->
+      <div class="place-card">
+
+        <img
+          src="{% static 'images/goa image4.jpeg' %}"
+          alt="Dudhsagar Falls">
+
+        <div class="place-content">
+          <h3>Dudhsagar Falls</h3>
+
+          <p>
+            One of India’s tallest waterfalls surrounded
+            by lush forests and scenic beauty.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Card 3 -->
+      <div class="place-card">
+
+        <img
+          src="{% static 'images/goa image5.jpg' %}"
+          alt="Basilica of Bom Jesus">
+
+        <div class="place-content">
+          <h3>Bom Jesus Basilica</h3>
+
+          <p>
+            A UNESCO World Heritage church showcasing
+            Portuguese architecture and rich history.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+ <!-- =========================================
+     GOA HOTELS SECTION
+========================================= -->
+
+<section class="goa-hotels">
+
+    <div class="section-title">
+        <h2>Best Hotels In Goa</h2>
+        <p>Luxury, comfort, and affordable stays for every traveler</p>
+    </div>
+
+    <!-- LUXURY HOTELS -->
+
+    <h1 class="hotel-category">Luxury Hotels</h1>
+
+    <div class="hotel-container">
+
+        <div class="hotel-card">
+
+            <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="hotel-content">
+
+                <h3>Taj Exotica Resort & Spa</h3>
+
+                <p>
+                    Premium beachfront luxury resort with spa,
+                    private beach, and world-class hospitality.
+                </p>
+
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> 5 Star</span>
+                    <span><i class="fa-solid fa-location-dot"></i> South Goa</span>
+                </div>
+
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Taj+Exotica+Resort+Spa+Goa', '_blank')">Book Now</button>
+
+            </div>
+
+        </div>
+
+        <div class="hotel-card">
+
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="hotel-content">
+
+                <h3>W Goa</h3>
+
+                <p>
+                    Stylish luxury resort near Vagator Beach
+                    with infinity pool and sea-view rooms.
+                </p>
+
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> 5 Star</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Vagator</span>
+                </div>
+
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=W+Goa+Vagator+Goa', '_blank')">Book Now</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- COMFORT HOTELS -->
+
+    <h1 class="hotel-category">Comfort Hotels</h1>
+
+    <div class="hotel-container">
+
+        <div class="hotel-card">
+
+            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="hotel-content">
+
+                <h3>Country Inn & Suites</h3>
+
+                <p>
+                    Comfortable rooms with pool, modern interiors,
+                    and easy beach access.
+                </p>
+
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> 4 Star</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Candolim</span>
+                </div>
+
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Country+Inn+Suites+Candolim+Goa', '_blank')">Book Now</button>
+
+            </div>
+
+        </div>
+
+        <div class="hotel-card">
+
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="hotel-content">
+
+                <h3>Lemon Tree Amarante</h3>
+
+                <p>
+                    Elegant stay with modern facilities,
+                    restaurant, and peaceful atmosphere.
+                </p>
+
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> 4 Star</span>
+                    <span><i class="fa-solid fa-location-dot"></i> North Goa</span>
+                </div>
+
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Lemon+Tree+Amarante+Goa', '_blank')">Book Now</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- AFFORDABLE HOTELS -->
+
+    <h1 class="hotel-category">Affordable Hotels</h1>
+
+    <div class="hotel-container">
+
+        <div class="hotel-card">
+
+            <img src="https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="hotel-content">
+
+                <h3>Zostel Goa</h3>
+
+                <p>
+                    Popular affordable hostel with vibrant
+                    atmosphere and beach vibes.
+                </p>
+
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> Budget</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Anjuna</span>
+                </div>
+
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Zostel+Anjuna+Goa', '_blank')">Book Now</button>
+
+            </div>
+
+        </div>
+
+        <div class="hotel-card">
+
+            <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="hotel-content">
+
+                <h3>Hotel Bonanza</h3>
+
+                <p>
+                    Budget-friendly stay with clean rooms
+                    and quick access to beaches.
+                </p>
+
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> Budget</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Calangute</span>
+                </div>
+
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Hotel+Bonanza+Calangute+Goa', '_blank')">Book Now</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+ 
+<!-- Reviews Section -->
+{% include 'reviews_section.html' %}
+
+  <!-- Footer -->
+  <footer>
+
+    <h2>Amazing India</h2>
+
+    <p>
+      Explore the beaches, culture, food, and beauty
+      of India’s most loved tourist destinations.
+    </p>
+
+  </footer>
+
+</body>
+</html>

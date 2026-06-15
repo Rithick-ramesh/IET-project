@@ -1,0 +1,522 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kashmir - Amazing India</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<!-- =========================
+     NAVBAR
+========================= -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top"
+     style="background: rgba(0, 0, 0, 0.85) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding: 15px 0; z-index: 2000; width: 100%;">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold text-warning fs-2"
+           href="{% url 'home' %}"
+           style="letter-spacing: 1px; color: #ffcc00 !important; font-size: 28px !important; text-decoration: none;">
+            Amazing India
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end"
+             id="navbarNav">
+
+            <ul class="navbar-nav align-items-center gap-3">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'destination' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Destination
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'ai_planner' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        AI Planner
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}" style="color: rgba(255, 255, 255, 0.75) !important; font-size: 16px; font-weight: 500; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='rgba(255, 255, 255, 0.75)'">
+                        Contact
+                    </a>
+                </li>
+
+                {% if user.is_authenticated %}
+
+                <li class="nav-item">
+                    <span class="text-white small" style="color: white !important; font-weight: 500;">
+                        Hi, {{ user.username }}
+                    </span>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}"
+                       class="btn btn-warning rounded-pill px-3"
+                       style="color: black !important; background-color: #ffcc00 !important; border: none; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Logout
+                    </a>
+                </li>
+
+                {% else %}
+
+                <li class="nav-item">
+                    <a href="{% url 'login' %}"
+                       class="btn btn-warning rounded-pill px-3"
+                       style="color: black !important; background-color: #ffcc00 !important; border: none; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Login
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'signup' %}"
+                       class="btn btn-outline-light rounded-pill px-3"
+                       style="color: white !important; border: 1px solid white !important; font-weight: bold; font-size: 14px; text-decoration: none;">
+                        Sign Up
+                    </a>
+                </li>
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+  <!-- Navbar -->
+ 
+
+  <!-- Hero Section -->
+  <section class="hero kashmir-bg">
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+
+      <h1>Welcome To Kashmir</h1>
+
+      <p>
+        Experience the breathtaking beauty of snow-covered mountains,
+        peaceful lakes, valleys, gardens, and the paradise on earth.
+      </p>
+
+      
+
+    </div>
+
+  </section>
+
+<!-- Live Travel Status & Alerts Section -->
+<section class="live-alerts-section py-4" style="background: #fff6eb; border-bottom: 1px solid rgba(255, 152, 0, 0.15);">
+  <div class="container">
+    <div class="d-flex align-items-center gap-2 mb-3">
+      <span class="pulse-indicator"></span>
+      <h4 class="fw-bold mb-0 text-dark" style="font-size: 20px; letter-spacing: 0.5px;">Live Travel Status & Alerts</h4>
+    </div>
+    
+    <div class="row g-3">
+      <!-- Weather Card -->
+      <div class="col-md-3">
+        <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+          <div class="d-flex align-items-center gap-3">
+            <div class="alert-icon-box weather-bg"><i class="fa-solid fa-cloud-sun"></i></div>
+            <div>
+              <h5 class="fw-bold mb-1 small text-muted text-uppercase" style="font-size: 11px;">Local Weather</h5>
+              <p class="mb-0 text-dark small font-weight-bold" style="font-size: 13px;">{{ alerts.weather }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Crowd Warning Card -->
+      <div class="col-md-3">
+        <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+          <div class="d-flex align-items-center gap-3">
+            <div class="alert-icon-box crowd-bg"><i class="fa-solid fa-users-line"></i></div>
+            <div>
+              <h5 class="fw-bold mb-1 small text-muted text-uppercase" style="font-size: 11px;">Crowd Status</h5>
+              <p class="mb-0 text-dark small font-weight-bold" style="font-size: 13px;">{{ alerts.crowd }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Safety Card -->
+      <div class="col-md-3">
+        <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+          <div class="d-flex align-items-center gap-3">
+            <div class="alert-icon-box safety-bg"><i class="fa-solid fa-shield-halved"></i></div>
+            <div>
+              <h5 class="fw-bold mb-1 small text-muted text-uppercase" style="font-size: 11px;">Safety Updates</h5>
+              <p class="mb-0 text-dark small font-weight-bold" style="font-size: 13px;">{{ alerts.safety }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Emergency Contacts Card -->
+      <div class="col-md-3">
+        <div class="card h-100 p-3 border-0 shadow-sm alert-status-card">
+          <div class="d-flex align-items-center gap-3">
+            <div class="alert-icon-box emergency-bg"><i class="fa-solid fa-truck-medical"></i></div>
+            <div>
+              <h5 class="fw-bold mb-1 small text-muted text-uppercase" style="font-size: 11px;">Emergency Help</h5>
+              <p class="mb-1 text-dark small" style="font-size: 12px;"><strong>Hospital:</strong> {{ alerts.hospital }}</p>
+              <p class="mb-0 text-dark small" style="font-size: 12px;"><strong>Police:</strong> {{ alerts.police }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Live Alerts CSS overrides -->
+<style>
+        body {
+            padding-top: 85px !important;
+        }
+
+  .pulse-indicator {
+    width: 10px;
+    height: 10px;
+    background-color: #ff9800;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);
+    animation: pulse 1.6s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);
+    }
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 6px rgba(255, 152, 0, 0);
+    }
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 152, 0, 0);
+    }
+  }
+
+  .alert-status-card {
+    background: white;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    border-left: 4px solid #ff9800 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+  }
+
+  .alert-status-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 152, 0, 0.1) !important;
+  }
+
+  .alert-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .weather-bg { background: #e3f2fd; color: #1e88e5; }
+  .crowd-bg { background: #fff3e0; color: #fb8c00; }
+  .safety-bg { background: #e8f5e9; color: #43a047; }
+  .emergency-bg { background: #ffebee; color: #e53935; }
+  .kashmir-bg{
+    background: url('{% static "images/kashmir image3.jpg" %}') no-repeat center center/cover !important;
+  }
+</style>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+
+    <div class="about-image">
+      <img
+        src="{% static 'images/kashmir image2.jpg' %}"
+        alt="Kashmir">
+    </div>
+
+    <div class="about-content">
+
+      <span class="section-tag">PARADISE ON EARTH</span>
+
+      <h2>About Kashmir</h2>
+
+      <p>
+        Kashmir is one of the most beautiful destinations in India,
+        famous for its stunning valleys, snow-capped mountains,
+        rivers, gardens, and natural beauty.
+      </p>
+
+      <p>
+        The region offers unforgettable experiences including
+        shikara rides on Dal Lake, skiing in Gulmarg,
+        trekking, and exploring traditional Kashmiri culture.
+      </p>
+
+      <div class="info-grid">
+
+        <div class="info-card">
+          <i class="fa-solid fa-location-dot"></i>
+          <h3>Region</h3>
+          <p>Jammu & Kashmir</p>
+        </div>
+
+        <div class="info-card">
+          <i class="fa-solid fa-language"></i>
+          <h3>Language</h3>
+          <p>Kashmiri</p>
+        </div>
+
+        <div class="info-card">
+          <i class="fa-solid fa-snowflake"></i>
+          <h3>Best Time</h3>
+          <p>March - October</p>
+        </div>
+
+        <div class="info-card">
+          <i class="fa-solid fa-utensils"></i>
+          <h3>Famous Food</h3>
+          <p>Rogan Josh</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Tourist Places -->
+  <section class="places" id="places">
+
+    <div class="section-title">
+      <h2>Top Tourist Attractions</h2>
+      <p>Best places to visit in Kashmir</p>
+    </div>
+
+    <div class="place-container">
+
+      <!-- Card 1 -->
+      <div class="place-card">
+
+        <img
+          src="{% static 'images/kashmir image3.jpg' %}"
+          alt="Dal Lake">
+
+        <div class="place-content">
+          <h3>Dal Lake</h3>
+
+          <p>
+            Famous for houseboats and shikara rides
+            surrounded by majestic mountains.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Card 2 -->
+      <div class="place-card">
+
+        <img
+          src="{% static 'images/kashmir image4.jpg' %}"
+          alt="Gulmarg">
+
+        <div class="place-content">
+          <h3>Gulmarg</h3>
+
+          <p>
+            A stunning hill station known for skiing,
+            snow adventures, and scenic beauty.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Card 3 -->
+      <div class="place-card">
+
+        <img
+          src="images tour/kashmir image5.jpg"
+          alt="Pahalgam">
+
+        <div class="place-content">
+          <h3>Pahalgam</h3>
+
+          <p>
+            A peaceful valley surrounded by pine forests,
+            rivers, and beautiful mountain landscapes.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+  <section class="kashmir-hotels">
+
+    <div class="section-title">
+        <h2>Best Hotels In Kashmir</h2>
+        <p>Enjoy paradise on earth with luxury, comfort, and budget stays</p>
+    </div>
+
+    <!-- LUXURY -->
+    <h1 class="hotel-category">Luxury Hotels</h1>
+
+    <div class="hotel-container">
+
+        <div class="hotel-card">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop">
+            <div class="hotel-content">
+                <h3>The Lalit Grand Palace</h3>
+                <p>Royal luxury stay with Himalayan views and heritage charm.</p>
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> 5 Star</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Srinagar</span>
+                </div>
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=The+Lalit+Grand+Palace+Srinagar+Kashmir', '_blank')">Book Now</button>
+            </div>
+        </div>
+
+        <div class="hotel-card">
+            <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?q=80&w=1200&auto=format&fit=crop">
+            <div class="hotel-content">
+                <h3>Taj Dal View</h3>
+                <p>Luxury hotel overlooking Dal Lake with premium hospitality.</p>
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> 5 Star</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Srinagar</span>
+                </div>
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Taj+Dal+View+Srinagar+Kashmir', '_blank')">Book Now</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- COMFORT -->
+    <h1 class="hotel-category">Comfort Hotels</h1>
+
+    <div class="hotel-container">
+
+        <div class="hotel-card">
+            <img src="https://images.unsplash.com/photo-1501117716987-c8e1ecb210c1?q=80&w=1200&auto=format&fit=crop">
+            <div class="hotel-content">
+                <h3>Radisson Srinagar</h3>
+                <p>Modern comfort hotel with great amenities and city access.</p>
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> 4 Star</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Srinagar</span>
+                </div>
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Radisson+Srinagar+Kashmir', '_blank')">Book Now</button>
+            </div>
+        </div>
+
+        <div class="hotel-card">
+            <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1200&auto=format&fit=crop">
+            <div class="hotel-content">
+                <h3>Hotel Pine Spring</h3>
+                <p>Comfortable stay near Gulmarg with scenic mountain views.</p>
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> 4 Star</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Gulmarg</span>
+                </div>
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Hotel+Pine+Spring+Gulmarg+Kashmir', '_blank')">Book Now</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- AFFORDABLE -->
+    <h1 class="hotel-category">Affordable Hotels</h1>
+
+    <div class="hotel-container">
+
+        <div class="hotel-card">
+            <img src="https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?q=80&w=1200&auto=format&fit=crop">
+            <div class="hotel-content">
+                <h3>Zostel Srinagar</h3>
+                <p>Budget-friendly hostel with lake views and cozy atmosphere.</p>
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> Budget</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Dal Lake</span>
+                </div>
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Zostel+Srinagar+Kashmir', '_blank')">Book Now</button>
+            </div>
+        </div>
+
+        <div class="hotel-card">
+            <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=1200&auto=format&fit=crop">
+            <div class="hotel-content">
+                <h3>Hotel Young Mamta</h3>
+                <p>Affordable stay with basic amenities and great hospitality.</p>
+                <div class="hotel-info">
+                    <span><i class="fa-solid fa-star"></i> Budget</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Srinagar</span>
+                </div>
+                <button onclick="window.open('https://www.booking.com/searchresults.html?ss=Hotel+Young+Mamta+Srinagar+Kashmir', '_blank')">Book Now</button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Reviews Section -->
+{% include 'reviews_section.html' %}
+
+  <!-- Footer -->
+  <footer>
+
+    <h2>Amazing India</h2>
+
+    <p>
+      Explore the mountains, lakes, culture,
+      and breathtaking beauty of Kashmir.
+    </p>
+
+  </footer>
+
+</body>
+</html>

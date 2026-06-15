@@ -1,0 +1,193 @@
+/* Premium Glassmorphism Theme for Signup Page */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 15px;
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=1470&auto=format&fit=crop') no-repeat center center/cover;
+    overflow-x: hidden;
+}
+
+.signup-container {
+    width: 100%;
+    max-width: 440px;
+    background: rgba(18, 18, 18, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 45px 35px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 204, 0, 0.18);
+    text-align: center;
+    color: white;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Custom Scrollbar for container */
+.signup-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.signup-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.signup-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 204, 0, 0.3);
+    border-radius: 10px;
+}
+
+.signup-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 204, 0, 0.5);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.signup-container h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    background: linear-gradient(135deg, #ffcc00, #ff9800);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.5px;
+}
+
+/* Style Django Form Fields Paragraphs */
+.signup-container form p {
+    text-align: left;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.signup-container form p label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.signup-container form p input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.07);
+    color: #fff;
+    font-size: 14.5px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-sizing: border-box;
+}
+
+.signup-container form p input:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #ffcc00;
+    box-shadow: 0 0 12px rgba(255, 204, 0, 0.25);
+    transform: translateY(-1px);
+}
+
+.signup-container form p .helptext {
+    display: block;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.45);
+    margin-top: 6px;
+    line-height: 1.45;
+}
+
+.signup-container form p .errorlist {
+    color: #ff4d4d;
+    list-style-type: none;
+    font-size: 12px;
+    margin-bottom: 6px;
+    padding-left: 0;
+    font-weight: 500;
+}
+
+.signup-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #ffcc00, #ff9800);
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    font-size: 16.5px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.2);
+}
+
+.signup-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 152, 0, 0.35);
+    background: linear-gradient(135deg, #ffe066, #ffb84d);
+}
+
+.signup-btn:active {
+    transform: translateY(0);
+}
+
+p.auth-switch {
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 20px;
+}
+
+p.auth-switch a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    margin-left: 4px;
+}
+
+p.auth-switch a:hover {
+    color: #ffb300;
+    text-decoration: underline;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-size: 13.5px;
+    transition: all 0.2s ease;
+}
+
+.back-link:hover {
+    color: #ffcc00;
+}
+
+/* Extra margin/padding classes styling */
+.messages-container {
+    animation: fadeIn 0.5s ease;
+}
